@@ -3,7 +3,7 @@ import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
-
+import logo from '../../../assets/home/logo.png'
 const Navbar = () => {
 const [open, setOpen] = useState(false)
 const menuLinks = [
@@ -15,15 +15,16 @@ const menuLinks = [
 ]
 
 
-
   return (
-    <div 
-    className={`flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 text-gray-600 border-b border-borderColor relative transition-all ${location.pathname ==='/' && 'bg-light' }`}>
-        <Link to='/'>
-          {/* <img  src={} alt="logo" className="max-h-8"/> */}
+  <div className="fixed w-full z-10 bg-color/opacity bg-black/35 ">
 
+      <div 
+    className={`flex items-center justify-between px-4 md:px-12 lg:px-12 xl:px-24 py-4 text-[#FFFFFF] relative transition-all ${location.pathname ==='/' && 'bg-light' }`}>
+        <Link to='/'>
+          <img src={logo} className="w-10 h-10 object-cover" alt=""  />
+            
          </Link>
-      <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 max-sm:border border-borderColor right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname ==='/'? 'bg-light' :'bg-white'} ${open ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}`}>
+      <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16   right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname ==='/'? 'bg-light' :'bg-white'} ${open ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}`}>
 
       
         {menuLinks.map((link, index) => {
@@ -33,7 +34,7 @@ const menuLinks = [
     <Link
       key={index}
       to={link.path}
-      className={`transition-all ${isActive ? 'text-primary font-semibold' : 'text-gray-600'}`}
+      className={`transition-all ${isActive ? 'text-[#EEFF25]    font-semibold' : 'text-[#FFFFFF]'}`}
     >
       {link.name}
     </Link>
@@ -49,6 +50,7 @@ const menuLinks = [
         <div >{open ? <IoCloseSharp className="text-2xl" /> : <CiMenuFries className="text-2xl" /> }</div>
       </button>
     </div>
+  </div>
   )
 }
 
