@@ -15,7 +15,7 @@ import SectionTitel from '../../../components/SectionTitel/SectionTitel';
 const Category = () => {
     return (
         <div className='w-10/12 mx-auto'>
-            <SectionTitel heading={'Order Online'} subHeading={'From 11.00am to 10.00pm'} >
+            <SectionTitel  subHeading={'From 11.00am to 10.00pm'} heading={'Order Online'} >
                 
             </SectionTitel>
              <Swiper
