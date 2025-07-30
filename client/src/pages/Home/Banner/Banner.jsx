@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import slider1 from '../../../assets/home/01.jpg'
 import slider2 from '../../../assets/home/02.jpg'
 import slider3 from '../../../assets/home/03.png'
+import slider4 from '../../../assets/home/04.jpg'
+import slider5 from '../../../assets/home/05.png'
+import slider6 from '../../../assets/home/06.png'
 const Banner = () => {
    
     const sliderData = [
@@ -16,6 +19,18 @@ const Banner = () => {
     {
       id: 3,
       imgSrc: slider3,
+    },
+    {
+      id: 4,
+      imgSrc: slider4,
+    },
+    {
+      id: 5,
+      imgSrc: slider5,
+    },
+    {
+      id: 6,
+      imgSrc: slider6,
     },
   ];
 

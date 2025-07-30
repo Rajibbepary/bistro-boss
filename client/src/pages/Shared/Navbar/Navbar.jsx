@@ -16,15 +16,15 @@ const menuLinks = [
 
 
   return (
-  <div className="fixed w-full z-10 bg-color/opacity bg-black/35 ">
+  <div className="fixed w-full z-10 bg-color/opacity  bg-black/30 ">
 
       <div 
     className={`flex items-center justify-between px-4 md:px-12 lg:px-12 xl:px-24 py-4 text-[#FFFFFF] relative transition-all ${location.pathname ==='/' && 'bg-light' }`}>
         <Link to='/'>
-          <img src={logo} className="w-10 h-10 object-cover" alt=""  />
+          <img src={logo} className="w-10 max-sm:hidden h-10 object-cover" alt=""  />
             
          </Link>
-      <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16   right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname ==='/'? 'bg-light' :'bg-white'} ${open ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}`}>
+      <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16   right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname ==='/'? 'bg-light' :' bg-black/40'} ${open ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}`}>
 
       
         {menuLinks.map((link, index) => {
