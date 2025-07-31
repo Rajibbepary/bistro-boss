@@ -2,21 +2,23 @@
 import { useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from '../../../assets/home/logo.png'
 const Navbar = () => {
+
+  const location = useLocation();
 const [open, setOpen] = useState(false)
 const menuLinks = [
     { name: "Home", path: "/" },
-    { name: "Contact Us", path: "/cars" },
-    { name: "Dashboard", path: "/my-bookings" },
-    { name: "Our Menu", path: "/my-bookings" },
-    { name: "Our Shop", path: "/my-bookings" },
+    { name: "Contact Us", path: "/contact" },
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Our Menu", path: "/our-menu" },
+    { name: "Our Shop", path: "/our-shop" },
 ]
 
 
   return (
-  <div className="fixed w-full z-10 bg-color/opacity  bg-black/30 ">
+  <div className="fixed w-full z-10 bg-black/30 ">
 
       <div 
     className={`flex items-center justify-between px-4 md:px-12 lg:px-12 xl:px-24 py-4 text-[#FFFFFF] relative transition-all ${location.pathname ==='/' && 'bg-light' }`}>
@@ -24,9 +26,8 @@ const menuLinks = [
           <img src={logo} className="w-10 max-sm:hidden h-10 object-cover" alt=""  />
             
          </Link>
-      <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16   right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${location.pathname ==='/'? 'bg-light' :' bg-black/40'} ${open ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}`}>
+      <div className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16   right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${open ? 'max-sm:translate-x-0' : 'max-sm:translate-x-full'}`}>
 
-      
         {menuLinks.map((link, index) => {
   const isActive = location.pathname === link.path;
 
