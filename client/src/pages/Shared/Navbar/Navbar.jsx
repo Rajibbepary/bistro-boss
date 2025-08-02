@@ -13,7 +13,7 @@ const menuLinks = [
     { name: "Contact Us", path: "/contact" },
     { name: "Dashboard", path: "/dashboard" },
     { name: "Our Menu", path: "/our-menu" },
-    { name: "Our Shop", path: "/order" },
+    { name: "Our Shop", path: "/order/salad" },
 ]
 
 

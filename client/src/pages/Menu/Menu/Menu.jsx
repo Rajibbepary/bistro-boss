@@ -23,16 +23,16 @@ const [menu] = useMenu()
            <Cover image={Bannerimg}  titel={'Our Menu'} subtitel={'WORLD YOU LIKE TO TRY DISH?'}/>
            <SectionTitel subHeading={"Don't miss"} heading={"TODAY' OFFER"}/>
            <MenuCategory items={offered} />
-           <Cover image={dessertsimg}  titel={'DESSERTS'} subtitel={'Healthy Gelato Treats — Tiny treats, big satisfaction – indulge in our low-calories, gluten-free mini sticks!'}/>
-            <MenuCategory items={ dessert} />
-              <Cover image={pizzaImage}  titel={'Pizza'} subtitel={'Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce'}/>
-              <MenuCategory items={ pizza} />
-               <Cover image={saladImage}  titel={'Salad'} subtitel={'Sautéed breaded veal escalope with watercress, lemon and veal jus.'}/>
-               <MenuCategory items={ salad} />
-               <Cover image={suopImage}  titel={'Saups'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
-                <MenuCategory items={ soup} />
-                 <Cover image={Bannerimg}  titel={'Drinks'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
-                  <MenuCategory items={ drinks} />
+           <Cover image={dessertsimg}  titel={'dessert'} subtitel={'Healthy Gelato Treats — Tiny treats, big satisfaction – indulge in our low-calories, gluten-free mini sticks!'}/>
+            <MenuCategory items={ dessert} titel={'dessert'} />
+              <Cover image={pizzaImage}  titel={'pizza'} subtitel={'Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce'}/>
+              <MenuCategory items={ pizza} titel={'pizza'} />
+               <Cover image={saladImage}  titel={'salad'} subtitel={'Sautéed breaded veal escalope with watercress, lemon and veal jus.'}/>
+               <MenuCategory items={ salad} titel={'salad'} />
+               <Cover image={suopImage}  titel={'soup'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
+                <MenuCategory items={ soup} titel={'soup'} />
+                 <Cover image={Bannerimg}  titel={'drinks'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
+                  <MenuCategory items={ drinks} titel={'drinks'} />
         </div>
     );
 };

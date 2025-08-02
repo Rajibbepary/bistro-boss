@@ -1,8 +1,9 @@
 
 import MenuItem from "../../Shared/MenuItem/MenuItem";
+import { Link } from 'react-router-dom';
 
 
-const MenuCategory = ({items }) => {
+const MenuCategory = ({items, titel }) => {
     return (
         <div >
           
@@ -11,9 +12,11 @@ const MenuCategory = ({items }) => {
                     items.slice(0, 6).map(item=> <MenuItem key={item._id} item={item}/>)
                 }
             </div>
+            <Link to={`/order/${titel}`}>
             <div className="text-center my-10">
                 <button className="uppercase border-0 border-b-4 rounded-md text-black mt-8 ">order our favourite food</button>
             </div>
+            </Link>
         </div>
     );
 };

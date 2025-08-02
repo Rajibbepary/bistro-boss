@@ -9,7 +9,7 @@ const Cover = ({image, titel, subtitel}) => {
               }}
             >
               <div className="bg-black/50 bg-color/opacity p-6 md:p-10 rounded-md text-center max-w-2xl mx-4  opacity-90 ">
-                <h2 className="text-white text-2xl font-bold mb-4" >{titel}</h2>
+                <h2 className="text-white text-2xl font-bold mb-4 uppercase" >{titel}</h2>
                 <p className="text-[#FFFFFF] " >
              {subtitel}       
         </p>
