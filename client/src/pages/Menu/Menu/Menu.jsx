@@ -22,9 +22,9 @@ const [menu] = useMenu()
         <div>
            <Cover image={Bannerimg}  titel={'Our Menu'} subtitel={'WORLD YOU LIKE TO TRY DISH?'}/>
            <SectionTitel subHeading={"Don't miss"} heading={"TODAY' OFFER"}/>
-           <MenuCategory items={offered} />
+           <MenuCategory items={offered} titel={'salad'} />
            <Cover image={dessertsimg}  titel={'dessert'} subtitel={'Healthy Gelato Treats — Tiny treats, big satisfaction – indulge in our low-calories, gluten-free mini sticks!'}/>
-            <MenuCategory items={ dessert} titel={'dessert'} />
+            <MenuCategory items={dessert} titel={'salad'} />
               <Cover image={pizzaImage}  titel={'pizza'} subtitel={'Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce'}/>
               <MenuCategory items={ pizza} titel={'pizza'} />
                <Cover image={saladImage}  titel={'salad'} subtitel={'Sautéed breaded veal escalope with watercress, lemon and veal jus.'}/>
