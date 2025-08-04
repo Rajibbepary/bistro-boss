@@ -14,6 +14,7 @@ const menuLinks = [
     { name: "Dashboard", path: "/dashboard" },
     { name: "Our Menu", path: "/our-menu" },
     { name: "Our Shop", path: "/order/salad" },
+    { name: "Login", path: "/Login" },
 ]
 
 
@@ -42,10 +43,10 @@ const menuLinks = [
        );
       })}
 
-        <div className="flex max-sm:flex-col items-start sm:items-center gap-6">
+        {/* <div className="flex max-sm:flex-col items-start sm:items-center gap-6">
 
             <button className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg">Login</button>
-        </div>
+        </div> */}
       </div>
       <button className="sm:hidden cursor-pointer" aria-label="Menu" onClick={()=> setOpen(!open)} >
         <div >{open ? <IoCloseSharp className="text-2xl" /> : <CiMenuFries className="text-2xl" /> }</div>
