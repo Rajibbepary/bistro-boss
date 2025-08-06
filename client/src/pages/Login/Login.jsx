@@ -7,9 +7,8 @@ import { loadCaptchaEnginge,
         LoadCanvasTemplate, 
          validateCaptcha } from 'react-simple-captcha';
 import { toast } from "react-toastify";
-import { useEffect, useRef, useState } from "react";
-//import { useContext } from "react";
-//import { AuthContext } from "../../providers/AuthProvider";
+import { useContext, useEffect, useRef, useState } from "react";
+import { AuthContext } from "../../providers/AuthProviders";
 
 
 const Login = () => {
@@ -18,7 +17,7 @@ const navigate = useNavigate()
 
     const from = location.state?.from?.pathname || "/";
    const captchaRef = useRef(null)
-   //const {signInWithGoogle, signIn} = useContext('');
+   const { signIn} = useContext(AuthContext);
 
     useEffect( () => {
         loadCaptchaEnginge(6); 
@@ -35,12 +34,12 @@ const navigate = useNavigate()
       const email = form.email.value
       const password = form.password.value
       console.log( email, password )
-     // signIn(email, password)
+      signIn(email, password)
       .then(result => {
         const user = result.user;
        console.log(user);
        toast.success('Signin Successful')
-       //navigate('/')
+       navigate('/')
        navigate(from, { replace: true });
       })
     }
