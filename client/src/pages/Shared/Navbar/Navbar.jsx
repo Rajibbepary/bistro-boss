@@ -1,10 +1,19 @@
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link, useLocation } from "react-router-dom";
 import logo from '../../../assets/home/logo.png'
+import { AuthContext } from "../../../providers/AuthProviders";
 const Navbar = () => {
+const {user, logOut} = useContext(AuthContext);
+
+const handleLogOut = () =>{
+    logOut()
+    .then(() =>{})
+    .catch(error => console.log(error))
+}
+
 
   const location = useLocation();
 const [open, setOpen] = useState(false)
@@ -14,8 +23,14 @@ const menuLinks = [
     { name: "Dashboard", path: "/dashboard" },
     { name: "Our Menu", path: "/our-menu" },
     { name: "Our Shop", path: "/order/salad" },
-    { name: "Login", path: "/Login" },
+    
 ]
+
+if (user) {
+  menuLinks.push({ name: "LogOut", onClick: handleLogOut });
+} else {
+  menuLinks.push({ name: "Login", path: "/login" });
+}
 
 
   return (
