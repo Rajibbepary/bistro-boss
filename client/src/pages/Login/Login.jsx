@@ -3,11 +3,8 @@ import lottieLogin from '../../assets/lottie/Animation - 1734804666104.json'
 import logo from '../../assets/home/logo.png'
 import Lottie from 'lottie-react'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
-import { loadCaptchaEnginge, 
-        LoadCanvasTemplate, 
-         validateCaptcha } from 'react-simple-captcha';
 import { toast } from "react-toastify";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 
 
@@ -16,12 +13,9 @@ const navigate = useNavigate()
   const location = useLocation();
 
     const from = location.state?.from?.pathname || "/";
-   const captchaRef = useRef(null)
    const { signIn} = useContext(AuthContext);
 
-    useEffect( () => {
-        loadCaptchaEnginge(6); 
-    }, [])
+    
    
     const [showPassword, setShowPassword] = useState(false)
     
@@ -44,16 +38,6 @@ const navigate = useNavigate()
       })
     }
 
-const handleValidateCaptcha = () => {
-    const user_captcha_value = captchaRef.current.value;
-    if (validateCaptcha(user_captcha_value)==true) {
-        toast.success('Captcha Matched SuccessFul!');
-    }
-
-    else {
-        toast.error('Captcha Does Not Match');
-    }
-}
 
 const handleGoogleSignIn = async () => {
   try {
@@ -167,30 +151,13 @@ const handleGoogleSignIn = async () => {
                       }
                       </p>
                   </div>
-                  {/* use react simple captcha start */}
-                  <div className='mt-4'>
-                    <label
-                      className='block mb-2 text-sm font-medium text-gray-600 '
-                      htmlFor='LoggingEmailAddress'
-                    >
-                     <LoadCanvasTemplate /> 
-                    </label>
-                    <input
-                      name='captcha'
-                      placeholder="type the captcha above"
-                      className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
-                      type='text'
-                      ref={captchaRef}
-    
-                    />
-                   
-                  </div>
+                  
       
                       
                     {/* react simple captha end */}
                   <div className='mt-6'>
                     <button
-                      type='submit' onClick={handleValidateCaptcha}
+                      type='submit' 
                       className="btn block w-full btn-outline border-0 border-b-4 rounded-2xl "
                     //   className='w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
                     >
