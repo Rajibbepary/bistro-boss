@@ -6,11 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 // import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
-import slide1 from '../../../assets/home/slide1.jpg'
-import slide2 from '../../../assets/home/slide2.jpg'
-import slide3 from '../../../assets/home/slide3.jpg'
-import slide4 from '../../../assets/home/slide4.jpg'
-import slide5 from '../../../assets/home/slide5.jpg'
+import { assets } from '../../../assets/assets';
 import SectionTitel from '../../../components/SectionTitel/SectionTitel';
 const Category = () => {
     return (
@@ -30,7 +26,7 @@ const Category = () => {
       >
         <SwiperSlide>
          <div className="relative group rounded-lg overflow-hidden">
-              <img src={slide1} alt="" className='rounded-md' />
+              <img src={assets.banner1} alt="" className='rounded-md' />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <h1 className="text-xl font-medium">Salad</h1>
                     <a href="#" className="flex items-center gap-1 text-sm text-white/70">
@@ -46,7 +42,7 @@ const Category = () => {
         </SwiperSlide>
          <SwiperSlide>
           <div className="relative group rounded-lg overflow-hidden">
-              <img src={slide2} alt="" className='rounded-md' />
+              <img src={assets.banner2} alt="" className='rounded-md' />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <h1 className="text-xl font-medium">Soups</h1>
                     <a href="#" className="flex items-center gap-1 text-sm text-white/70">
@@ -62,7 +58,7 @@ const Category = () => {
        </SwiperSlide>
         <SwiperSlide>
            <div className="relative group rounded-lg overflow-hidden">
-              <img src={slide3} alt="" className='rounded-md' />
+              <img src={assets.banner3} alt="" className='rounded-md' />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <h1 className="text-xl font-medium">Pizzas</h1>
                     <a href="#" className="flex items-center gap-1 text-sm text-white/70">
@@ -79,7 +75,7 @@ const Category = () => {
         </SwiperSlide>
          <SwiperSlide>
            <div className="relative group rounded-lg overflow-hidden">
-              <img src={slide4} alt="" className='rounded-md' />
+              <img src={assets.banner4} alt="" className='rounded-md' />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <h1 className="text-xl font-medium">Desserts</h1>
                     <a href="#" className="flex items-center gap-1 text-sm text-white/70">
@@ -96,7 +92,7 @@ const Category = () => {
          </SwiperSlide>
         <SwiperSlide>
            <div className="relative group rounded-lg overflow-hidden">
-              <img src={slide5} alt="" className='rounded-md' />
+              <img src={assets.banner5} alt="" className='rounded-md' />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <h1 className="text-xl font-medium">Soups</h1>
                     <a href="#" className="flex items-center gap-1 text-sm text-white/70">
@@ -113,7 +109,7 @@ const Category = () => {
       </SwiperSlide>
                 <SwiperSlide>
                    <div className="relative group rounded-lg overflow-hidden">
-              <img src={slide1} alt="" className='rounded-md' />
+              <img src={assets.banner1} alt="" className='rounded-md' />
                 <div className="absolute inset-0 flex flex-col justify-end p-4 text-white bg-black/50 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <h1 className="text-xl font-medium">Salad</h1>
                     <a href="#" className="flex items-center gap-1 text-sm text-white/70">
