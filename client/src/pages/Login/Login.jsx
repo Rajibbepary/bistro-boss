@@ -14,13 +14,9 @@ const navigate = useNavigate()
 
     const from = location.state?.from?.pathname || "/";
    const { signIn} = useContext(AuthContext);
-
-    
    
     const [showPassword, setShowPassword] = useState(false)
     
-    
-  
     // Email Password Signin
     const handleSignIn =  e => {
       e.preventDefault()
@@ -42,7 +38,6 @@ const navigate = useNavigate()
 const handleGoogleSignIn = async () => {
   try {
    // await signInWithGoogle()
-
     toast.success('Signin Successful')
     //navigate('/')
     navigate(from, { replace: true });
@@ -56,7 +51,7 @@ const handleGoogleSignIn = async () => {
       
         <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
             
-            <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg  lg:max-w-4xl '>
+            <div className='flex w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg lg:max-w-4xl '>
               <div
                 className='hidden bg-cover bg-center lg:block p-3 lg:w-1/2'>
                   <Lottie animationData={lottieLogin}></Lottie>
@@ -144,7 +139,7 @@ const handleGoogleSignIn = async () => {
                       className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                       type={showPassword ? 'text' : 'password'}
                     />
-                    <p onClick={()=> setShowPassword(!showPassword)}  className=' bg-white   absolute right-5 top-11'>
+                    <p onClick={()=> setShowPassword(!showPassword)}  className=' bg-white absolute right-5 top-11'>
                       
                       {
                         showPassword ? <FaEyeSlash/> :<FaEye />

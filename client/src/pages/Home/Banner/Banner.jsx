@@ -1,36 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import slider1 from '../../../assets/home/01.jpg'
-import slider2 from '../../../assets/home/02.jpg'
-import slider3 from '../../../assets/home/03.png'
-import slider4 from '../../../assets/home/04.jpg'
-import slider5 from '../../../assets/home/05.png'
-import slider6 from '../../../assets/home/06.png'
+import { assets } from '../../../assets/assets';
 const Banner = () => {
    
     const sliderData = [
     {
       id: 1,
-      imgSrc: slider1,
+      imgSrc: assets.slider1,
     },
     {
       id: 2,
-      imgSrc: slider2,
+      imgSrc: assets.slider2,
     },
     {
       id: 3,
-      imgSrc: slider3,
+      imgSrc: assets.slider3,
     },
     {
       id: 4,
-      imgSrc: slider4,
+      imgSrc: assets.slider4,
     },
     {
       id: 5,
-      imgSrc: slider5,
+      imgSrc: assets.slider5,
     },
     {
       id: 6,
-      imgSrc: slider6,
+      imgSrc: assets.slider6,
     },
   ];
 
