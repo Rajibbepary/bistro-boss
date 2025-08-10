@@ -9,7 +9,7 @@ import banner2 from './home/slide2.jpg'
 import banner3 from './home/slide3.jpg'
 import banner4 from './home/slide4.jpg'
 import banner5 from './home/slide5.jpg'
-
+import logo from './home/logo.png'
 export const assets = {
     slider1,
     slider2,
@@ -21,6 +21,16 @@ export const assets = {
     banner2,
     banner3,
     banner4,
-    banner5
+    banner5,
+    logo
 
 }
+
+
+export const menuLinks = [
+    { name: "Home", path: "/" },
+    { name: "Contact Us", path: "/contact" },
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Our Menu", path: "/our-menu" },
+    { name: "Our Shop", path: "/order/salad" }
+]
