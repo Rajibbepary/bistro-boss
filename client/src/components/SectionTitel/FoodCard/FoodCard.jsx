@@ -1,5 +1,31 @@
+import Swal from 'sweetalert2'
+import useAuth from "../../../hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 const FoodCard = ({ item }) => {
   const { image, name, recipe, price } = item;
+  const navigate = useNavigate()
+  const {user} = useAuth()
+  const handleAddToCart = food =>{
+    console.log(food, user?.email)
+     if( user && user.email){
+      //
+     }else{
+      Swal.fire({
+        title: "You are LogIn?",
+        text: "please login add to the cart!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, LogIn!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login')
+  }
+});
+     }
+  }
+
 
   return (
     <div className="bg-white relative rounded-2xl pb-4 overflow-hidden border border-gray-500/30">
@@ -23,7 +49,7 @@ const FoodCard = ({ item }) => {
         `}</style>
 
         <div className="relative inline-block p-0.5 rounded-md overflow-hidden hover:scale-105 transition duration-300 active:scale-100 before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,_#00F5FF,_#00F5FF30,_#00F5FF)] button-wrapper">
-          <button className="relative z-10 bg-gray-800 text-white rounded-md px-8 py-3 font-medium text-sm">
+          <button onClick={()=>handleAddToCart(item)} className="relative z-10 bg-gray-800 text-white rounded-md px-8 py-3 font-medium text-sm">
             Add To Cart
           </button>
         </div>

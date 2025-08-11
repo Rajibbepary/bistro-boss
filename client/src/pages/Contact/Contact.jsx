@@ -7,7 +7,7 @@ import { MdAccessTimeFilled } from "react-icons/md";
 import { IoIosSend } from "react-icons/io";
 const Contact = () => {
     return (
-        <div className="py-10">
+        <div className="">
             <Cover image={contactimg} titel={'CONTACT US'} subtitel={'Have a question or need help with your order? Our team is here for you! Reach out anytime—we’d love to hear from you.'}/>
 
             <SectionTitel subHeading={'Visit Us'} heading={'our location'}/>

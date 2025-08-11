@@ -33,9 +33,12 @@ async function run() {
     // Define database and collections
     const menuCollection = client.db('brstobossDB').collection('menu');
     const reviewCollection = client.db('brstobossDB').collection('reviews');
-
+    const cartCollection = client.db('brstobossDB').collection('carts');
+   
+    
     // ===== Routes =====
-
+    
+    
     // Get all menu items
     app.get('/menu', async (req, res) => {
       const result = await menuCollection.find().toArray();
@@ -47,6 +50,15 @@ async function run() {
       const result = await reviewCollection.find().toArray();
       res.send(result);
     });
+
+//carts collection
+
+app.post('/carts', async(req, res) =>{
+  const itemId = req.body;
+  const result = await cartCollection.insertOne(itemId);
+  res.send(result);
+
+})
 
     // Ping MongoDB to confirm successful connection
     await client.db("admin").command({ ping: 1 });
