@@ -1,16 +1,29 @@
 import Swal from 'sweetalert2'
 import useAuth from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios'; 
 const FoodCard = ({ item }) => {
-  const { image, name, recipe, price } = item;
+  const { image, name, recipe, price, _id } = item;
   const {user} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const handleAddToCart = food =>{
     console.log(food, user?.email)
      if( user && user.email){
-      //
-     }else{
+
+      const cartItem = {
+        menuId: _id,
+        email: user.email,
+        name,
+        image,
+        price
+      }
+      axios.post(`${import.meta.env.VITE_BASE_URL}/carts`, cartItem)
+        .then(res => {
+          console.log(res.data)
+        })
+     }
+     else{
       Swal.fire({
         title: "You are LogIn?",
         text: "please login add to the cart!",
