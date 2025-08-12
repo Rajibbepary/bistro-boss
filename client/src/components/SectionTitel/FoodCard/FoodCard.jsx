@@ -1,16 +1,22 @@
 import Swal from 'sweetalert2'
 import useAuth from "../../../hooks/useAuth";
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios'; 
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
+import useCart from '../../../hooks/useCart';
+
 const FoodCard = ({ item }) => {
   const { image, name, recipe, price, _id } = item;
   const {user} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const handleAddToCart = food =>{
-    console.log(food, user?.email)
-     if( user && user.email){
+  const axiosSecure = useAxiosSecure()
+  const [, refetch] = useCart();
 
+  const handleAddToCart = () =>{
+    //console.log(food, user?.email)
+     if( user && user.email){
+      //send cart item to the database
       const cartItem = {
         menuId: _id,
         email: user.email,
@@ -18,10 +24,15 @@ const FoodCard = ({ item }) => {
         image,
         price
       }
-      axios.post(`${import.meta.env.VITE_BASE_URL}/carts`, cartItem)
+      axiosSecure.post('/carts', cartItem)
         .then(res => {
-          console.log(res.data)
+          if(res.data.insertedId){
+          //   
+          toast.success(`${name} Added to cart successfully!`)
+          }
         })
+        //refetch cart to update the cart item 
+        refetch()
      }
      else{
       Swal.fire({
@@ -63,7 +74,7 @@ const FoodCard = ({ item }) => {
         `}</style>
 
         <div className="relative inline-block p-0.5 rounded-md overflow-hidden hover:scale-105 transition duration-300 active:scale-100 before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,_#00F5FF,_#00F5FF30,_#00F5FF)] button-wrapper">
-          <button onClick={()=>handleAddToCart(item)} className="relative z-10 bg-gray-800 text-white rounded-md px-8 py-3 font-medium text-sm">
+          <button onClick={handleAddToCart} className="relative z-10 bg-gray-800 text-white rounded-md px-8 py-3 font-medium text-sm">
             Add To Cart
           </button>
         </div>

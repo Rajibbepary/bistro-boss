@@ -5,7 +5,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProviders";
 import { assets, menuLinks } from "../../../assets/assets";
 import { FaCartPlus } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
 const Navbar = () => {
+  const [cart] = useCart();
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -67,7 +69,13 @@ const Navbar = () => {
               
             );
           })}
-        <FaCartPlus className="text-2xl" />
+      <div className="flex relative">
+          <FaCartPlus className="text-2xl" />
+          <div className="absolute top-0 left-2  bg-red-500 text-white text-xs rounded-md px-1">
+            +{cart.length}
+          </div>
+        </div>
+
           {/* Login/Logout Button */}
           <div className="flex max-sm:flex-col items-start sm:items-center gap-6">
             <button
