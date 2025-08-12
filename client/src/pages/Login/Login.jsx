@@ -12,10 +12,11 @@ const Login = () => {
 const navigate = useNavigate()
   const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/";
-   const { signIn} = useContext(AuthContext);
+  const from = location.state?.from?.pathname || "/";
+  console.log('state in the location login page', location.state)
+  const { signIn} = useContext(AuthContext);
    
-    const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
     
     // Email Password Signin
     const handleSignIn =  e => {
