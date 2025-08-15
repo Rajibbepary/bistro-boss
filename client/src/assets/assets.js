@@ -10,6 +10,10 @@ import banner3 from './home/slide3.jpg'
 import banner4 from './home/slide4.jpg'
 import banner5 from './home/slide5.jpg'
 import logo from './home/logo.png'
+import wallet from './icon/wallet 1@1x.png'
+import store from './icon/store 1@1x.png'
+import group from './icon/Group@1x.png'
+import text from './icon/Hi, Welcome Back!@1x.png'
 export const assets = {
     slider1,
     slider2,
@@ -22,16 +26,19 @@ export const assets = {
     banner3,
     banner4,
     banner5,
-    logo
+    logo,
+    wallet,
+    store,
+    group,
+    text,
 
 }
 
 
 export const menuLinks = [
     { name: "Home", path: "/" },
-    { name: "Contact Us", path: "/contact" },
-    { name: "Dashboard", path: "/dashboard" },
     { name: "Our Menu", path: "/our-menu" },
     { name: "Our Shop", path: "/order/salad" },
+     { name: "Contact Us", path: "/contact" },
     {name: 'Dashbord', path:'/dashboard'}
 ]
