@@ -14,6 +14,7 @@ import wallet from './icon/wallet 1@1x.png'
 import store from './icon/store 1@1x.png'
 import group from './icon/Group@1x.png'
 import text from './icon/Hi, Welcome Back!@1x.png'
+import profile from './icon/user_profile.png'
 export const assets = {
     slider1,
     slider2,
@@ -31,6 +32,7 @@ export const assets = {
     store,
     group,
     text,
+    profile
 
 }
 
