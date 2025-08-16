@@ -15,6 +15,7 @@ import Dashboard from "../Layout/Dashboard";
 import UserHome from "../pages/UserHome/UserHome";
 import Mycart from "../pages/UserHome/Mycart";
 import Reservation from "../pages/UserHome/Reservation";
+import Review from "../pages/UserHome/Review";
 
 
 export const router = createBrowserRouter([
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
       {
         path:'cart',
         element:<Mycart/>
+      },
+      {
+        path:"review",
+        element:<Review/>
       }
     ]
   }

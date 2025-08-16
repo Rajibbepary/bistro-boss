@@ -1,5 +1,5 @@
 import { useLocation, Link } from "react-router-dom";
-
+import { FaStar } from "react-icons/fa";
 const UserNavbar = () => {
   const location = useLocation();
 
@@ -35,12 +35,16 @@ const UserNavbar = () => {
     </svg>
   );
 
+  const star = (
+     <FaStar />
+  );
+  
   const sidebarLinks = [
     { name: "User Home", path: "/dashboard/home", icon: home },
     { name: "Reservation", path: "/dashboard/reservation", icon: reservation },
     { name: "Payment", path: "/chat", icon: payment },
     { name: "My Cart", path: "/dashboard/cart", icon: cart },
-    { name: "Add Review", path: "/chat", icon: booking },
+    { name: "Add Review", path: "/dashboard/review", icon: star },
     { name: "My Booking", path: "/chat", icon: booking },
   ];
 
