@@ -3,7 +3,7 @@ import SectionTitel from "../../components/SectionTitel/SectionTitel";
 
 const Review = () => {
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto my-10">
             <SectionTitel subHeading={'Sharing is Caring'} heading={'GIVE A REVIEW'}/>
              <form className="flex flex-col items-center text-sm bg-[#F3F3F3] py-20 w-11/12 mx-auto rounded-sm">
             <p className="text-2xl text-black/80 font-medium pb-2 font-cinzel">RATE US!</p>
