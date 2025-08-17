@@ -7,21 +7,22 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { AuthContext } from '../../providers/AuthProviders'
+import useAxiosPublic from '../../hooks/useAxiosPublic'
 
 
 
 const SignUp = () => {
-
-  const navigate = useNavigate()
+  const axiosPublic = useAxiosPublic();
   const {register, handleSubmit, reset, formState: { errors } } = useForm();
-  const {  signInWithGoogle,createUser, updateUserProfile } = useContext(AuthContext)
+  const {  signInWithGoogle,createUser, updateUserProfile} = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const onSubmit = data => {
-    console.log(data)
     createUser(data.email, data.password)
     .then(result => {
       const loggedUser = result.user;
       console.log(loggedUser)
+
       updateUserProfile(data.name, data.photo)
       .then(()=>{
         const userInfo = {

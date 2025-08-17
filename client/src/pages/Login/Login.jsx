@@ -14,7 +14,7 @@ const navigate = useNavigate()
 
   const from = location.state?.from?.pathname || "/";
   console.log('state in the location login page', location.state)
-  const { signIn} = useContext(AuthContext);
+  const { signIn, signInWithGoogle} = useContext(AuthContext);
    
   const [showPassword, setShowPassword] = useState(false)
     
@@ -38,9 +38,9 @@ const navigate = useNavigate()
 
 const handleGoogleSignIn = async () => {
   try {
-   // await signInWithGoogle()
+    await signInWithGoogle()
     toast.success('Signin Successful')
-    //navigate('/')
+    navigate('/')
     navigate(from, { replace: true });
   } catch (err) {
     console.log(err)

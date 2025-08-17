@@ -4,9 +4,12 @@ import { createContext, useEffect, useState } from "react";
 import { 
     createUserWithEmailAndPassword, 
     getAuth, 
+    GoogleAuthProvider, 
     onAuthStateChanged, 
     signInWithEmailAndPassword, 
-    signOut
+    signInWithPopup, 
+    signOut,
+    updateProfile
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 
@@ -23,6 +26,7 @@ const AuthProviders = ({ children }) => {
     // Loading state to indicate if auth is being checked
     const [loading, setLoading] = useState(true);
 
+    const googleProvider = new GoogleAuthProvider()
     // Function to create a new user with email and password
     const createUser = (email, password) => {
         setLoading(true);
@@ -35,10 +39,24 @@ const AuthProviders = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password); // ✅ Fixed: added `auth` as first argument
     };
 
+const signInWithGoogle = () =>{
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider)
+}
+
+
     const logOut = () =>{
         setLoading(false)
         return signOut(auth)
     }
+
+    const updateUserProfile = (name, photo) => {
+      return updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photo,
+      })
+    }
+    
 
     // Listen for changes in auth state (e.g., login, logout)
     useEffect(() => {
@@ -58,7 +76,9 @@ const AuthProviders = ({ children }) => {
         loading,
         createUser,
         signIn,
-        logOut
+      signInWithGoogle,
+        logOut,
+        updateUserProfile
     };
 
     // Provide auth context to children components
