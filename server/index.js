@@ -31,6 +31,7 @@ async function run() {
     await client.connect();
 
     // Define database and collections
+    const userCollection = client.db('brstobossDB').collection('users');
     const menuCollection = client.db('brstobossDB').collection('menu');
     const reviewCollection = client.db('brstobossDB').collection('reviews');
     const cartCollection = client.db('brstobossDB').collection('carts');
@@ -38,7 +39,16 @@ async function run() {
     
     // ===== Routes =====
     
-    
+   //user Related Api 
+   
+  app.post('/users', async(req, res) =>{
+    const user = req.body;
+    const result = await userCollection.insertOne(user);
+    res.send(result)
+  })
+
+
+
     // Get all menu items
     app.get('/menu', async (req, res) => {
       const result = await menuCollection.find().toArray();
