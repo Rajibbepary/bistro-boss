@@ -45,16 +45,21 @@ const SignUp = () => {
   
   
     // Google Signin
-    const handleGoogleSignIn = async () => {
-      try {
-        await signInWithGoogle()
-  
-        toast.success('Signin Successful')
-        navigate('/')
-      } catch (err) {
-        console.log(err)
-        toast.error(err?.message)
-      }
+    const handleGoogleSignIn = () => {
+       signInWithGoogle()
+      .then(result =>{
+        console.log(result.user)
+        const userInfo ={
+          email: result.user?.email,
+          name: result.user?.displayName
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(res =>{
+          console.log(res.data)
+          navigate('/')
+        })
+      })
+        
     }
   
     return (

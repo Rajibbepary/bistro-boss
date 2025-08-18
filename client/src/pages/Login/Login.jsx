@@ -6,12 +6,13 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { toast } from "react-toastify";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const Login = () => {
 const navigate = useNavigate()
   const location = useLocation();
-
+  const  axiosPublic = useAxiosPublic()
   const from = location.state?.from?.pathname || "/";
   console.log('state in the location login page', location.state)
   const { signIn, signInWithGoogle} = useContext(AuthContext);
@@ -36,17 +37,23 @@ const navigate = useNavigate()
     }
 
 
-const handleGoogleSignIn = async () => {
-  try {
-    await signInWithGoogle()
-    toast.success('Signin Successful')
-    navigate('/')
-    navigate(from, { replace: true });
-  } catch (err) {
-    console.log(err)
-    toast.error(err?.message)
-  }
-}
+const handleGoogleSignIn = () => {
+       signInWithGoogle()
+      .then(result =>{
+        console.log(result.user)
+        const userInfo ={
+          email: result.user?.email,
+          name: result.user?.displayName
+        }
+        axiosPublic.post('/users', userInfo)
+        .then(res =>{
+          console.log(res.data)
+          navigate('/')
+        })
+      })
+        
+    }
+  
 
     return (
       
