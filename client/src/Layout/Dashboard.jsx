@@ -1,9 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import { assets } from "../assets/assets";
 import UserNavbar from "../pages/UserHome/UserNavbar";
+import AdminSidebar from "../pages/AdminHome/AdminSidebar";
 
 const Dashboard = () => {
 
+    const isAdmin = true
    
     
     return (
@@ -19,7 +21,14 @@ const Dashboard = () => {
             </div>
 
             <div className="flex">
-            <UserNavbar/>
+           {
+            isAdmin ? <>
+            <AdminSidebar/>
+            </> : <>
+             <UserNavbar/>
+            </>
+           }
+
             <Outlet>
 
             </Outlet>

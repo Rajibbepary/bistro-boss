@@ -36,7 +36,7 @@ export const assets = {
 
 }
 
-
+// navbar menulink
 export const menuLinks = [
     { name: "Home", path: "/" },
     { name: "Our Menu", path: "/our-menu" },
@@ -44,3 +44,4 @@ export const menuLinks = [
      { name: "Contact Us", path: "/contact" },
     {name: 'Dashbord', path:'/dashboard'}
 ]
+

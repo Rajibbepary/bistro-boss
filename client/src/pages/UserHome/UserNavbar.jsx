@@ -63,7 +63,7 @@ const UserNavbar = () => {
             }`}
           >
             {item.icon}
-            <p className="md:block hidden text-center">{item.name}</p>
+            <p className="md:block hidden text-center font-Cinzel uppercase">{item.name}</p>
           </Link>
         );
       })}
