@@ -15,6 +15,9 @@ import store from './icon/store 1@1x.png'
 import group from './icon/Group@1x.png'
 import text from './icon/Hi, Welcome Back!@1x.png'
 import profile from './icon/user_profile.png'
+import customer from './icon/customer 1@1x.png'
+import truck from './icon/truck 1@1x.png'
+import chef from './icon/chef 1@1x.png'
 export const assets = {
     slider1,
     slider2,
@@ -32,7 +35,10 @@ export const assets = {
     store,
     group,
     text,
-    profile
+    profile,
+    customer,
+    truck,
+    chef
 
 }
 

@@ -16,6 +16,7 @@ import UserHome from "../pages/UserHome/UserHome";
 import Mycart from "../pages/UserHome/Mycart";
 import Reservation from "../pages/UserHome/Reservation";
 import Review from "../pages/UserHome/Review";
+import AddminHome from "../pages/AdminHome/AddminHome";
 
 
 export const router = createBrowserRouter([
@@ -75,6 +76,12 @@ export const router = createBrowserRouter([
       {
         path:"review",
         element:<Review/>
+      },
+
+      //Admin route
+      {
+        path:"addminhome",
+        element:<AddminHome/>
       }
     ]
   }

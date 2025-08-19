@@ -7,7 +7,7 @@ const UserHome = () => {
     return (
         <div className="w-10/12 mx-auto my-4">
             {/* small cart div */}
-               <h1 className="font-Cinzel font-medium lg:text-4xl lg:ml-10 ml-4 my-3 text-2xl">HI, WELCOME BACK</h1> 
+          <h1 className="font-Cinzel font-medium lg:text-4xl lg:ml-10 ml-4 my-3 text-2xl">HI, WELCOME BACK</h1> 
            <div className="flex flex-col lg:flex-row gap-6 w-11/12 mx-auto  justify-center">
   {/* card-1 */}
   <div className="w-full sm:w-64 md:w-80 lg:w-96 h-36 flex justify-center items-center rounded-md bg-gradient-to-r from-[#BB34F5] to-[#FCDBFF]">

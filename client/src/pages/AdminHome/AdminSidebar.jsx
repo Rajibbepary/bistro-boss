@@ -8,7 +8,7 @@ const AdminSidebar = () => {
   const location = useLocation();
 
   const sidebarLinks = [
-    { name: "Admin Home", path: "/dashboard/home", icon: <FaHome /> },
+    { name: "Admin Home", path: "/dashboard/addminhome", icon: <FaHome /> },
     { name: "Add Items", path: "/dashboard/reservation", icon: <ImSpoonKnife /> },
     { name: "Manage Items", path: "/chat", icon: <AiOutlineBars /> },
     { name: "Booking", path: "/dashboard/cart", icon: <FaBook /> },
