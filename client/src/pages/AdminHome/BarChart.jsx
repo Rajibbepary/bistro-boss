@@ -35,11 +35,12 @@ const BarChart = () => {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
-      <Bar dataKey="uv" shape={<TriangleBar />} label={{ position: 'top' }}>
+      <Bar dataKey="uv" shape={<TriangleBar />} label={{ position: 'top' } }>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
         ))}
       </Bar>
+         
     </ReBarChart>
   );
 };
