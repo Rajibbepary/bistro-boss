@@ -74,7 +74,7 @@ const handleMakeAdmin = user =>{
                     <table className="md:table-auto table-fixed w-full overflow-hidden">
                         <thead className="text-white/90 text-sm text-left bg-[#D1A054]">
                             <tr>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel"></th>
+                                <th className="px-4 py-3 font-semibold truncate font-Cinzel max-sm:hidden"></th>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel">Name</th>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel ">Email</th>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel">Role</th>
@@ -84,7 +84,7 @@ const handleMakeAdmin = user =>{
                         <tbody className="text-sm text-gray-500">
                             {users.map((user, index) => (
                                 <tr key={index} className="border-t border-gray-500/20">
-                                   <td className="px-4 py-3">{index + 1}</td>
+                                   <td className="px-4 py-3 max-sm:hidden">{index + 1}</td>
                                     <td className="px-4 py-3">{user.name}</td>
                                     <td className="px-4 py-3 ">{user.email}</td>
                                      <td className="px-4 py-3">

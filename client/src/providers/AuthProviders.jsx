@@ -12,6 +12,7 @@ import {
     updateProfile
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 // Create an authentication context to provide auth data to the whole app
 export const AuthContext = createContext(null);
@@ -27,6 +28,8 @@ const AuthProviders = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const googleProvider = new GoogleAuthProvider()
+
+    const axiosPublic = useAxiosSecure();
     // Function to create a new user with email and password
     const createUser = (email, password) => {
         setLoading(true);
@@ -36,7 +39,7 @@ const AuthProviders = ({ children }) => {
     // Function to sign in a user with email and password
     const signIn = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password); // ✅ Fixed: added `auth` as first argument
+        return signInWithEmailAndPassword(auth, email, password); //Fixed: added `auth` as first argument
     };
 
 const signInWithGoogle = () =>{
@@ -65,10 +68,17 @@ const signInWithGoogle = () =>{
 
             if(currentUser){
                 //get token and store client
+                const userInfo = { email: currentUser.email};
+                axiosPublic.post('/jwt', userInfo)
+                .then(res =>{
+                    if(res.data.token){
+                        localStorage.setItem('access-token', res.data.token)
+                    }
+                })
             }
             else{
                 //TODO: remove token
-                
+                localStorage.removeItem('access-token');
             }
             console.log('current user', currentUser);
             setLoading(false);    // Auth check complete
