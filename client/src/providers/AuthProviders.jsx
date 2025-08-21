@@ -62,6 +62,14 @@ const signInWithGoogle = () =>{
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser); // Set current user
+
+            if(currentUser){
+                //get token and store client
+            }
+            else{
+                //TODO: remove token
+                
+            }
             console.log('current user', currentUser);
             setLoading(false);    // Auth check complete
         });

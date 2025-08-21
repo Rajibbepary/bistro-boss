@@ -15,7 +15,26 @@ const axiosSecure = useAxiosSecure();
         }
     })
 
-    const handleDeleteuser = user =>{
+const handleMakeAdmin = user =>{
+    axiosSecure.patch(`/users/admin/${user._id}`)
+    .then(res => {
+      //  console.log(res.data)
+        if(res.data.modifiedCount > 0){
+            refetch()
+            Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${user.name} is an Admin Now!`,
+            showConfirmButton: false,
+            timer: 1500
+});
+        }
+    })
+}
+
+
+
+  const handleDeleteuser = user =>{
         Swal.fire({
   title: "Are you sure?",
   text: `${user.name}`,
@@ -26,8 +45,6 @@ const axiosSecure = useAxiosSecure();
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-
-
     axiosSecure.delete(`/users/${user._id}`)
         .then(res=> {
             if(res.data.deletedCount > 0){
@@ -42,6 +59,9 @@ const axiosSecure = useAxiosSecure();
     
   }
 });
+
+
+
     }
 
     return (
@@ -56,7 +76,7 @@ const axiosSecure = useAxiosSecure();
                             <tr>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel"></th>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel">Name</th>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel hidden md:block">Email</th>
+                                <th className="px-4 py-3 font-semibold truncate font-Cinzel ">Email</th>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel">Role</th>
                                 <th className="px-4 py-3 font-semibold truncate font-Cinzel">Action</th>
                             </tr>
@@ -66,9 +86,13 @@ const axiosSecure = useAxiosSecure();
                                 <tr key={index} className="border-t border-gray-500/20">
                                    <td className="px-4 py-3">{index + 1}</td>
                                     <td className="px-4 py-3">{user.name}</td>
-                                    <td className="px-4 py-3 max-sm:hidden">{user.email}</td>
-                                     <td className="px-4 py-3 max-sm:hidden"><FaUsers  className='bg-[#D1A054] text-white text-2xl p-1 rounded-sm'/></td>
-                                      <td className="px-4 py-3 max-sm:hidden"> <button  onClick={()=>handleDeleteuser(user)}><RiDeleteBin6Line className='bg-[#B91C1C] text-white text-2xl p-1 rounded-sm'/></button></td>
+                                    <td className="px-4 py-3 ">{user.email}</td>
+                                     <td className="px-4 py-3">
+                                        { user.role == 'admin' ? "Admin" :
+                                            <button onClick={()=> handleMakeAdmin(user)}><FaUsers  className='bg-[#D1A054] text-white text-2xl p-1 rounded-sm'/></button>
+                                        }
+                                     </td>
+                                      <td className="px-4 py-3 "> <button  onClick={()=>handleDeleteuser(user)}><RiDeleteBin6Line className='bg-[#B91C1C] text-white text-2xl p-1 rounded-sm'/></button></td>
                                 </tr>
                             ))}
                         </tbody>

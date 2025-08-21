@@ -2,6 +2,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
@@ -39,6 +40,16 @@ async function run() {
     
     // ===== Routes =====
     
+    //jwt related api
+    app.post('/jwt', async (req, res) => {
+      const user = req.body;
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
+        expiresIn: '1h'
+      })
+      res.send({ token });
+    })
+
+
    //user Related Api 
    app.get('/users', async (req, res) =>{
     const result = await userCollection.find().toArray();
@@ -54,7 +65,22 @@ async function run() {
     const result = await userCollection.insertOne(user);
     res.send(result)
   })
-  
+
+//admin role change related Api
+
+app.patch('/users/admin/:id', async (req, res)=>{
+  const id = req.params.id;
+  const filter = {_id: new ObjectId(id)};
+  const updatedDoc = {
+    $set: {
+      role: 'admin'
+    }
+  }
+  const result = await userCollection.updateOne(filter, updatedDoc)
+  res.send(result);
+})
+
+
 app.delete('/users/:id', async (req, res) =>{
   const id = req.params.id;
   const query = {_id: new ObjectId(id)}
