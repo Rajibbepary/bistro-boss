@@ -65,42 +65,61 @@ const handleMakeAdmin = user =>{
     }
 
     return (
-        <div className='w-11/12 mx-auto'>
-            <SectionTitel subHeading={'How many??'} heading={'Manage All users'}/>
-            <div className="flex-1 py-10 flex flex-col justify-between bg-[#FFFFFF] p-4">
-            <div className="w-full md:p-10 p-4">
-                <h2 className="pb-4 text-lg font-medium uppercase font-Cinzel">All Users: {users.length}</h2>
-                <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-r-sm rounded-l-sm bg-white border border-gray-500/20">
-                    <table className="md:table-auto table-fixed w-full overflow-hidden">
-                        <thead className="text-white/90 text-sm text-left bg-[#D1A054]">
-                            <tr>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel max-sm:hidden"></th>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel">Name</th>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel ">Email</th>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel">Role</th>
-                                <th className="px-4 py-3 font-semibold truncate font-Cinzel">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-sm text-gray-500">
-                            {users.map((user, index) => (
-                                <tr key={index} className="border-t border-gray-500/20">
-                                   <td className="px-4 py-3 max-sm:hidden">{index + 1}</td>
-                                    <td className="px-4 py-3">{user.name}</td>
-                                    <td className="px-4 py-3 ">{user.email}</td>
-                                     <td className="px-4 py-3">
-                                        { user.role == 'admin' ? "Admin" :
-                                            <button onClick={()=> handleMakeAdmin(user)}><FaUsers  className='bg-[#D1A054] text-white text-2xl p-1 rounded-sm'/></button>
-                                        }
-                                     </td>
-                                      <td className="px-4 py-3 "> <button  onClick={()=>handleDeleteuser(user)}><RiDeleteBin6Line className='bg-[#B91C1C] text-white text-2xl p-1 rounded-sm'/></button></td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        </div>
+       <div className="w-11/12 mx-auto">
+  <SectionTitel subHeading={'How many??'} heading={'Manage All users'} />
+  <div className="flex-1 py-6 flex flex-col justify-between bg-white p-4 rounded-lg shadow">
+    <div className="w-full p-2 md:p-6">
+      <h2 className="pb-4 text-lg md:text-xl font-semibold uppercase font-Cinzel">
+        All Users: {users.length}
+      </h2>
+
+      {/* Responsive Table Wrapper */}
+      <div className="w-full overflow-x-auto">
+        <table className="min-w-[600px] md:table-auto table-fixed w-full border border-gray-200 rounded-lg overflow-hidden">
+          <thead className="text-white text-sm md:text-base bg-[#D1A054]">
+            <tr>
+              <th className="px-4 py-3 font-semibold font-Cinzel text-left w-12">#</th>
+              <th className="px-4 py-3 font-semibold font-Cinzel text-left">Name</th>
+              <th className="px-4 py-3 font-semibold font-Cinzel text-left">Email</th>
+              <th className="px-4 py-3 font-semibold font-Cinzel text-left">Role</th>
+              <th className="px-4 py-3 font-semibold font-Cinzel text-left">Action</th>
+            </tr>
+          </thead>
+          <tbody className="text-sm md:text-base text-gray-600">
+            {users.map((user, index) => (
+              <tr key={index} className="border-t border-gray-200 hover:bg-gray-50">
+                <td className="px-4 py-3">{index + 1}</td>
+                <td className="px-4 py-3">{user.name}</td>
+                <td className="px-4 py-3 break-words">{user.email}</td>
+                <td className="px-4 py-3">
+                  {user.role === 'admin' ? (
+                    "Admin"
+                  ) : (
+                    <button
+                      onClick={() => handleMakeAdmin(user)}
+                      className="p-1 bg-[#D1A054] text-white rounded-md hover:bg-[#b57d36] transition"
+                    >
+                      <FaUsers className="text-xl" />
+                    </button>
+                  )}
+                </td>
+                <td className="px-4 py-3">
+                  <button
+                    onClick={() => handleDeleteuser(user)}
+                    className="p-1 bg-[#B91C1C] text-white rounded-md hover:bg-red-700 transition"
+                  >
+                    <RiDeleteBin6Line className="text-xl" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
     );
 };
 
