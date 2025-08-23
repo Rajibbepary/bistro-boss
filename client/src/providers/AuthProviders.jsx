@@ -86,7 +86,7 @@ const signInWithGoogle = () =>{
 
         // Cleanup the listener when component unmounts
         return () => unsubscribe();
-    }, []);
+    }, [axiosPublic]);
 
     // Bundle all auth-related data and methods
     const authInfo = {
