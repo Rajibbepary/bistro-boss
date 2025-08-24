@@ -68,9 +68,22 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+//use verify admin after verifyToken
+const verityAdmin = async(req, res, next) =>{
+  const email = req.decoded.email;
+  const query = {email: email};
+  const user = await userCollection.findOne(query);
+  const isAdmin = user?.role === 'admin';
+  if(!isAdmin){
+    return res.status(403).send({message: 'forbidden access'})
+  }
+  next();
+}
+
+
 
    //user Related Api 
-   app.get('/users', verifyToken, async (req, res) =>{
+   app.get('/users', verifyToken, verityAdmin, async (req, res) =>{
     const result = await userCollection.find().toArray();
     res.send(result)
    })
@@ -104,7 +117,7 @@ app.get('/users/admin/:email', verifyToken, async(req, res)=>{
 
 //admin role change related Api
 
-app.patch('/users/admin/:id', async (req, res)=>{
+app.patch('/users/admin/:id', verifyToken, verityAdmin, async (req, res)=>{
   const id = req.params.id;
   const filter = {_id: new ObjectId(id)};
   const updatedDoc = {
@@ -117,7 +130,7 @@ app.patch('/users/admin/:id', async (req, res)=>{
 })
 
 
-app.delete('/users/:id', async (req, res) =>{
+app.delete('/users/:id', verifyToken, verityAdmin, async (req, res) =>{
   const id = req.params.id;
   const query = {_id: new ObjectId(id)}
   const result = await userCollection.deleteOne(query);
