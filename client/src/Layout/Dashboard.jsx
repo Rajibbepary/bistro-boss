@@ -2,10 +2,11 @@ import { Link, Outlet } from "react-router-dom";
 import { assets } from "../assets/assets";
 import UserNavbar from "../pages/UserHome/UserNavbar";
 import AdminSidebar from "../pages/AdminHome/AdminSidebar";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
 
-    const isAdmin = true
+    const [isAdmin] = useAdmin()
    
     
     return (

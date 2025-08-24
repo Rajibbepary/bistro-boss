@@ -49,22 +49,25 @@ async function run() {
       res.send({ token });
     })
 //middlewares
-const verifyToken = (req, res, next) =>{
-  console.log('inside verity token',req.headers.authorization)
-  
-  if(!req.headers. authorization){
-    return res.status(401).send({ message: 'forbidden access'});
+
+
+const verifyToken = (req, res, next) => {
+  console.log('inside verify token', req.headers.authorization);
+
+  if (!req.headers.authorization) {
+    return res.status(401).send({ message: 'Unauthorized access' });
   }
+
   const token = req.headers.authorization.split(' ')[1];
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) =>{
-    if(err){
-      return res.status(401).send({message: 'forbidden access'})
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(403).send({ message: 'Forbidden access' });
     }
     req.decoded = decoded;
-    next()
-  })
-  
-}
+    next();
+  });
+};
+
 
    //user Related Api 
    app.get('/users', verifyToken, async (req, res) =>{
@@ -72,7 +75,7 @@ const verifyToken = (req, res, next) =>{
     res.send(result)
    })
 
-app.get('/user/admin/:email', verifyToken, async(req, res)=>{
+app.get('/users/admin/:email', verifyToken, async(req, res)=>{
   const email = req.params.email;
   if(email !== req.decoded.email){
     return res.status(403).send({message: 'unauthorized access'})
