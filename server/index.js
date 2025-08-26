@@ -144,6 +144,12 @@ app.delete('/users/:id', verifyToken, verifyAdmin, async (req, res) =>{
       res.send(result);
     });
 
+    app.post('/menu', async(req, res) =>{
+      const item = req.body;
+      const result = await menuCollection.insertOne(item);
+      res.send(result)
+    })
+
     // Get all reviews
     app.get('/review', async (req, res) => {
       const result = await reviewCollection.find().toArray();

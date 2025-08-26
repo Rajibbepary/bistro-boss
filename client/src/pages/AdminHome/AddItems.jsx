@@ -2,16 +2,49 @@
 import SectionTitel from "../../components/SectionTitel/SectionTitel";
 import { FaUtensils } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
+import useAxiosPublic from './../../hooks/useAxiosPublic';
+import useAxiosSecure from './../../hooks/useAxiosSecure';
+import { toast } from 'react-toastify';
 
-
-
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
 const AddItems = () => {
-      const {register,handleSubmit,} = useForm()
+ const {register,handleSubmit, reset} = useForm()
+ const axiosPublic = useAxiosPublic()
+ const axiosSecure = useAxiosSecure()
+ 
+ 
 
- const onSubmit = (data) => {
- console.log(data)
+    const onSubmit = async (data) => {
+  if(!data.image || data.image.length === 0){
+    toast.error("Please select an image");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image", data.image[0]); 
+
+  const res = await axiosPublic.post(image_hosting_api, formData);
+
+  if(res.data.success){
+    const menuItem = {
+      name: data.name,
+      category: data.category,
+      price: parseFloat(data.price),
+      recipe: data.recipe,
+      image: res.data.data.display_url
+    }
+
+    const meenuRes = await axiosSecure.post('/menu', menuItem);
+
+    if(meenuRes.data.insertedId){
+      reset()
+      toast.success(`${data.name} is added to the menu`);
+    }
+  }
 };
+
 
 
     return (
@@ -19,31 +52,18 @@ const AddItems = () => {
             <SectionTitel subHeading={"What's new?"} heading={'add in item'}/>
             <div className="py-10 flex flex-col md:w-1/2  mx-auto justify-between bg-white">
             <form onSubmit={handleSubmit(onSubmit)} className="md:p-10 p-4 space-y-5 max-w-lg">
-               <div>
-  <p className="text-base font-medium">Recipe Image*</p>
-  <div className="flex flex-wrap items-center gap-3 mt-2">
-    {Array(4)
-      .fill('')
-      .map((_, index) => (
-        <label key={index} htmlFor={`image${index}`}>
-          <input
-            type="file"
-            id={`image${index}`}
-            accept="image/*"
-            hidden
-            {...register(`images.${index}`)}
-          />
-          <img
-            className="max-w-24 cursor-pointer"
-            src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/e-commerce/uploadArea.png"
-            alt="uploadArea"
-            width={100}
-            height={100}
-          />
-        </label>
-      ))}
-  </div>
-</div>
+              
+              <div>
+                    <p className="text-base font-medium">Product Image</p>
+                    <div className="flex flex-wrap items-center gap-3 mt-2">
+                        {Array(4).fill('').map((_, index) => (
+                            <label key={index} htmlFor={`image${index}`}>
+                                <input {...register("image" )}  accept="image/*" type="file" id={`image${index}`} hidden />
+                                <img className="max-w-24 cursor-pointer" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/e-commerce/uploadArea.png" alt="uploadArea" width={100} height={100} />
+                            </label>
+                        ))}
+                    </div>
+                </div>
 
                 <div className="flex flex-col gap-1 max-w-md">
                     <label className="text-base font-medium" htmlFor="product-name">Recipe Name*</label>
