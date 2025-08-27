@@ -39,7 +39,7 @@ const AddItems = () => {
     const meenuRes = await axiosSecure.post('/menu', menuItem);
 
     if(meenuRes.data.insertedId){
-      reset()
+       reset()
       toast.success(`${data.name} is added to the menu`);
     }
   }
