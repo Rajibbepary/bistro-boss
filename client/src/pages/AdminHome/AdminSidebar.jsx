@@ -10,7 +10,7 @@ const AdminSidebar = () => {
   const sidebarLinks = [
     { name: "Admin Home", path: "/dashboard/addminhome", icon: <FaHome /> },
     { name: "Add Items", path: "/dashboard/addItems", icon: <ImSpoonKnife /> },
-    { name: "Manage Items", path: "/chat", icon: <AiOutlineBars /> },
+    { name: "Manage Items", path: "/dashboard/manageitem", icon: <AiOutlineBars /> },
     { name: "Booking", path: "/dashboard/cart", icon: <FaBook /> },
     { name: "All Users", path: "/dashboard/alluser", icon: <FaUsers /> },
   ];

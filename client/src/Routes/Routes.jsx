@@ -20,6 +20,7 @@ import AddminHome from "../pages/AdminHome/AddminHome";
 import AllUsers from "../pages/AdminHome/AllUsers";
 import AddItems from "../pages/AdminHome/AddItems";
 import AdminRoute from "./AdminRoute";
+import ManageItem from "../pages/AdminHome/ManageItem";
 
 
 export const router = createBrowserRouter([
@@ -87,14 +88,18 @@ export const router = createBrowserRouter([
         element:<AddminHome/>
       },
       {
-        path:"alluser",
-        element: <AdminRoute><AllUsers/></AdminRoute>
-      },
-      {
         path:"addItems",
         element:<AdminRoute><AddItems/> </AdminRoute>
 
-      }
+      },
+       {
+        path:"manageitem",
+        element: <AdminRoute> <ManageItem/> </AdminRoute>
+      },
+       {
+        path:"alluser",
+        element: <AdminRoute><AllUsers/></AdminRoute>
+      },
     ]
   }
 ]);
