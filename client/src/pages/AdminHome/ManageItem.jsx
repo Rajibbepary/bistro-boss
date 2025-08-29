@@ -1,22 +1,32 @@
-import { toast } from "react-toastify";
+
 import SectionTitel from "../../components/SectionTitel/SectionTitel";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
-import useCart from "../../hooks/useCart";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { FaPenToSquare } from "react-icons/fa6";
-
+import useMenu from "../../hooks/useMenu";
+import Swal from 'sweetalert2'
 const ManageItem = () => {
-     const [cart, refetch] = useCart()
-     const axiosSecure = useAxiosSecure()
-    const handleDelete = id => {
-
-       axiosSecure.delete(`/carts/${id}`)
-       .then(res =>{
-        if(res.data.deletedCount > 0){
-            refetch()
-            toast.success('Deleted Success')
+     
+     const [menu] = useMenu()
+   
+    const handleDelete = (item) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+        if (result.isConfirmed) {
+            // Swal.fire({
+            // title: "Deleted!",
+            // text: "Your file has been deleted.",
+            // icon: "success"
+            // });
         }
-       })
+        });
+       
     }
     return (
         <div className="w-11/12 mx-auto">
@@ -24,7 +34,7 @@ const ManageItem = () => {
             <div className="flex-1 py-10 flex flex-col justify-between">
             <div className="w-full md:p-10 p-4">
                 <div className="flex justify-between items-center mb-4">
-                     <h2 className="text-lg font-medium">TOTAL ITEM: {cart?.length}</h2>
+                     <h2 className="text-lg font-medium">TOTAL ITEM: {menu?.length}</h2>
                       
                 </div>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
@@ -33,13 +43,13 @@ const ManageItem = () => {
                             <tr>
                                 <th className="px-4 py-3 font-semibold truncate">IMAGE</th>
                                  <th className="px-4 py-3 font-semibold truncate">NAME</th>
-                                <th className="px-4 py-3 font-semibold truncate hidden md:block">PRICE</th>
+                                <th className="px-4 py-3 font-semibold truncate">PRICE</th>
                                 <th className="px-4 py-3 font-semibold truncate">ACTION</th>
                                  <th className="px-4 py-3 font-semibold truncate">ACTION</th>
                             </tr>
                         </thead>
                         <tbody className="text-sm text-gray-500">
-                            {cart.map((item, index) => (
+                            {menu.map((item, index) => (
                                 <tr key={index} className="border-t border-gray-500/20">
                                     <td className="md:px-4 pl-2 md:pl-4 py-3 flex items-center space-x-3 truncate">
                                         <div className="border border-gray-300 rounded overflow-hidden">
@@ -53,7 +63,7 @@ const ManageItem = () => {
                                         <button  className="bg-[#D1A054] p-2 rounded-sm">< FaPenToSquare className=" text-white/80"/></button>
                                     </td>
                                     <td className="px-8 ">
-                                        <button className="p-2 rounded-sm bg-[#B91C1C]" onClick={()=>handleDelete(item._id)}><RiDeleteBinLine className="text-white/80 " /></button>
+                                        <button className="p-2 rounded-sm bg-[#B91C1C]" onClick={()=>handleDelete(item)}><RiDeleteBinLine className="text-white/80 " /></button>
                                     </td>
                                 </tr>
                             ))}
