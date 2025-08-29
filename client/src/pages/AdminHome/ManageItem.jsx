@@ -4,10 +4,11 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { FaPenToSquare } from "react-icons/fa6";
 import useMenu from "../../hooks/useMenu";
 import Swal from 'sweetalert2'
+import useAxiosSecure from './../../hooks/useAxiosSecure';
 const ManageItem = () => {
      
-     const [menu] = useMenu()
-   
+     const {menu, refetch} = useMenu()
+    const axiosSecure = useAxiosSecure()
     const handleDelete = (item) => {
         Swal.fire({
             title: "Are you sure?",
@@ -17,13 +18,21 @@ const ManageItem = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
+        }).then( async(result) => {
         if (result.isConfirmed) {
-            // Swal.fire({
-            // title: "Deleted!",
-            // text: "Your file has been deleted.",
-            // icon: "success"
-            // });
+            const res = await axiosSecure.delete(`/menu/${item._id}`)
+            console.log(res.data)
+            if(res.data.deletedCount > 0){
+                refetch();
+                Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${item.name} has been deleted`,
+                showConfirmButton: false,
+                timer: 1500
+                });
+            }
+            
         }
         });
        
@@ -63,7 +72,7 @@ const ManageItem = () => {
                                         <button  className="bg-[#D1A054] p-2 rounded-sm">< FaPenToSquare className=" text-white/80"/></button>
                                     </td>
                                     <td className="px-8 ">
-                                        <button className="p-2 rounded-sm bg-[#B91C1C]" onClick={()=>handleDelete(item)}><RiDeleteBinLine className="text-white/80 " /></button>
+                                        <button className="p-2 rounded-sm bg-[#B91C1C]" onClick={() => handleDelete(item)}><RiDeleteBinLine className="text-white/80 " /></button>
                                     </td>
                                 </tr>
                             ))}
