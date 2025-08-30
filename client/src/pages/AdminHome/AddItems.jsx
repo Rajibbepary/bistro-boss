@@ -54,9 +54,9 @@ const AddItems = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="md:p-10 p-4 space-y-5 max-w-lg">
               
               <div>
-                    <p className="text-base font-medium">Product Image</p>
+                    <p className="text-sm text-gray-500">Product Image</p>
                     <div className="flex flex-wrap items-center gap-3 mt-2">
-                        {Array(4).fill('').map((_, index) => (
+                        {Array(1).fill('').map((_, index) => (
                             <label key={index} htmlFor={`image${index}`}>
                                 <input {...register("image" )}  accept="image/*" type="file" id={`image${index}`} hidden />
                                 <img className="max-w-24 cursor-pointer" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/e-commerce/uploadArea.png" alt="uploadArea" width={100} height={100} />
@@ -66,16 +66,16 @@ const AddItems = () => {
                 </div>
 
                 <div className="flex flex-col gap-1 max-w-md">
-                    <label className="text-base font-medium" htmlFor="product-name">Recipe Name*</label>
+                    <label className="text-sm text-gray-500" htmlFor="product-name">Recipe Name*</label>
                     <input {...register("name" )} id="product-name" type="text" placeholder="Type here" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"  />
                 </div>
                 <div className="flex flex-col gap-1 max-w-md">
-                    <label className="text-base font-medium" htmlFor="product-description">Recipe Details*</label>
+                    <label className="text-sm text-gray-500" htmlFor="product-description">Recipe Details*</label>
                     <textarea  {...register("recipe")} id="product-description" rows={4} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none" placeholder="Type here"></textarea>
                 </div>
                 <div className="flex items-center gap-5 flex-wrap">
                     <div className="flex-1 flex flex-col gap-1 w-32">
-                       <label className="text-base font-medium" htmlFor="category">Category*</label>
+                       <label className="text-sm text-gray-500" htmlFor="category">Category*</label>
                     <select  {...register("category")} id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
                         <option value="">Select Category</option>
                         {[{ name: 'salad' }, { name: 'pizza' },  { name: 'drinks' }, { name: 'dessert' }, { name: 'soup' }].map((item, index) => (
@@ -84,7 +84,7 @@ const AddItems = () => {
                     </select>
                     </div>
                      <div className="flex-1 flex flex-col gap-1 w-32">
-                        <label className="text-base font-medium" htmlFor="product-price">Price*</label>
+                        <label className="text-sm text-gray-500" htmlFor="product-price">Price*</label>
                         <input  {...register("price")} id="product-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
                     </div>
                 </div>
