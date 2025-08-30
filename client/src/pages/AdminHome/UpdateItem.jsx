@@ -1,54 +1,60 @@
-
-import SectionTitel from "../../components/SectionTitel/SectionTitel";
+import { useForm } from "react-hook-form";
 import { FaUtensils } from "react-icons/fa";
-import { useForm } from 'react-hook-form';
-import useAxiosPublic from './../../hooks/useAxiosPublic';
-import useAxiosSecure from './../../hooks/useAxiosSecure';
-import { toast } from 'react-toastify';
-
+import { toast } from "react-toastify";
+import SectionTitel from "../../components/SectionTitel/SectionTitel";
+import { useLoaderData } from "react-router-dom";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import Swal from 'sweetalert2'
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddItems = () => {
- const {register,handleSubmit, reset} = useForm()
- const axiosPublic = useAxiosPublic()
- const axiosSecure = useAxiosSecure()
- 
- 
- const onSubmit = async (data) => {
-  if(!data.image || data.image.length === 0){
-    toast.error("Please select an image");
-    return;
-  }
+const UpdateItem = () => {
 
-  const formData = new FormData();
-  formData.append("image", data.image[0]); 
+    const {name, category, price, recipe, _id} = useLoaderData()
+   
+     const {register,handleSubmit, reset} = useForm()
+      const axiosPublic = useAxiosPublic()
+     const axiosSecure = useAxiosSecure()
+      const onSubmit = async (data) => {
+       if(!data.image || data.image.length === 0){
+         toast.error("Please select an image");
+         return;
+       }
+     
+       const formData = new FormData();
+       formData.append("image", data.image[0]); 
+     
+       const res = await axiosPublic.post(image_hosting_api, formData);
+     
+       if(res.data.success){
+         const menuItem = {
+           name: data.name,
+           category: data.category,
+           price: parseFloat(data.price),
+           recipe: data.recipe,
+           image: res.data.data.display_url
+         }
+     
+        const meenuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
+     
+         if(meenuRes.data.modifiedCount > 0){
+            reset()
 
-  const res = await axiosPublic.post(image_hosting_api, formData);
-
-  if(res.data.success){
-    const menuItem = {
-      name: data.name,
-      category: data.category,
-      price: parseFloat(data.price),
-      recipe: data.recipe,
-      image: res.data.data.display_url
+         Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title:`${data.name} is updated to the menu` ,
+            showConfirmButton: false,
+            timer: 1500
+            });
+         }
+       }
+    
     }
-
-    const meenuRes = await axiosSecure.post('/menu', menuItem);
-
-    if(meenuRes.data.insertedId){
-       reset()
-      toast.success(`${data.name} is added to the menu`);
-    }
-  }
-};
-
-
-
-    return (
+     return (
         <div className="w-11/12 mx-auto ">
-            <SectionTitel subHeading={"What's new?"} heading={'add in item'}/>
+            <SectionTitel subHeading={"Refresh info"} heading={'update in item'}/>
             <div className="py-10 flex flex-col md:w-1/2  mx-auto justify-between bg-white">
             <form onSubmit={handleSubmit(onSubmit)} className="md:p-10 p-4 space-y-5 max-w-lg">
               
@@ -66,16 +72,16 @@ const AddItems = () => {
 
                 <div className="flex flex-col gap-1 max-w-md">
                     <label className="text-sm text-gray-500" htmlFor="product-name">Recipe Name*</label>
-                    <input {...register("name" )} id="product-name" type="text" placeholder="Type here" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"  />
+                    <input defaultValue={name} {...register("name" )} id="product-name" type="text"  placeholder="Type here" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40"  />
                 </div>
                 <div className="flex flex-col gap-1 max-w-md">
                     <label className="text-sm text-gray-500" htmlFor="product-description">Recipe Details*</label>
-                    <textarea  {...register("recipe")} id="product-description" rows={4} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none" placeholder="Type here"></textarea>
+                    <textarea defaultValue={recipe} {...register("recipe")} id="product-description" rows={4} className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40 resize-none" placeholder="Type here"></textarea>
                 </div>
                 <div className="flex items-center gap-5 flex-wrap">
                     <div className="flex-1 flex flex-col gap-1 w-32">
                        <label className="text-sm text-gray-500" htmlFor="category">Category*</label>
-                    <select  {...register("category")} id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
+                    <select defaultValue={category}  {...register("category")} id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
                         <option value="">Select Category</option>
                         {[{ name: 'salad' }, { name: 'pizza' },  { name: 'drinks' }, { name: 'dessert' }, { name: 'soup' }].map((item, index) => (
                             <option  key={index} value={item.name}>{item.name}</option>
@@ -84,7 +90,7 @@ const AddItems = () => {
                     </div>
                      <div className="flex-1 flex flex-col gap-1 w-32">
                         <label className="text-sm text-gray-500" htmlFor="product-price">Price*</label>
-                        <input  {...register("price")} id="product-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
+                        <input defaultValue={price}  {...register("price")} id="product-price" type="number" placeholder="0" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40" required />
                     </div>
                 </div>
 
@@ -95,4 +101,4 @@ const AddItems = () => {
     );
 };
 
-export default AddItems;
+export default UpdateItem;

@@ -5,6 +5,7 @@ import { FaPenToSquare } from "react-icons/fa6";
 import useMenu from "../../hooks/useMenu";
 import Swal from 'sweetalert2'
 import useAxiosSecure from './../../hooks/useAxiosSecure';
+import { Link } from "react-router-dom";
 const ManageItem = () => {
      
      const [menu, ,refetch] = useMenu()
@@ -43,7 +44,7 @@ const ManageItem = () => {
             <div className="flex-1 py-10 flex flex-col justify-between">
             <div className="w-full md:p-10 p-4">
                 <div className="flex justify-between items-center mb-4">
-                     <h2 className="text-lg font-medium">TOTAL ITEM: {menu?.length}</h2>
+                     <h2 className="text-lg font-medium text-gray-600">TOTAL ITEM: {menu?.length}</h2>
                       
                 </div>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
@@ -69,7 +70,9 @@ const ManageItem = () => {
                                      <td className="px-4 py-3">{item.name}</td>
                                     <td className="px-4 py-3">{item.price}</td>
                                     <td className="px-8 ">
+                                       <Link to={`/dashboard/updateItem/${item._id}`}>
                                         <button  className="bg-[#D1A054] p-2 rounded-sm">< FaPenToSquare className=" text-white/80"/></button>
+                                       </Link>
                                     </td>
                                     <td className="px-8 ">
                                         <button className="p-2 rounded-sm bg-[#B91C1C]" onClick={() => handleDelete(item)}><RiDeleteBinLine className="text-white/80 " /></button>
