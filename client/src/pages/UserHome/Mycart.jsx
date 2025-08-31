@@ -3,6 +3,7 @@ import SectionTitel from "../../components/SectionTitel/SectionTitel";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useCart from "../../hooks/useCart";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const Mycart = () => {
     const [cart, refetch] = useCart()
@@ -26,7 +27,10 @@ const Mycart = () => {
                 <div className="flex justify-between items-center mb-4">
                      <h2 className="text-lg font-medium">TOTAL ORDERS: {cart?.length}</h2>
                       <h2 className="text-lg font-medium">TOTAL PRICE: {totalprice}</h2>
+                    
+                    <Link to='/dashboard/payment'>
                       <button className="bg-orange-400 w-[60px] h-[40px] rounded-md mr-16">PAY</button>
+                    </Link>
                 </div>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
                     <table className="md:table-auto table-fixed w-full overflow-hidden">
