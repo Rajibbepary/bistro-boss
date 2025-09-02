@@ -1,12 +1,29 @@
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
+import useAxiosSecure from './../../hooks/useAxiosSecure';
+import useCart from './../../hooks/useCart';
 
 const CheckoutForm = () => {
   const [error, setError] = useState('');
+  const [clientSecret, setClientSecret] = useState('')
   const [success, setSuccess] = useState('');
   const stripe = useStripe();
   const elements = useElements();
+  const axiosSecure = useAxiosSecure()
+  const [cart] = useCart()
+  const totalPrice = cart.reduce( (total, item) => total + item.price, 0)
+
+
+  useEffect( ()=>{
+      axiosSecure.post('/creat-payment-intent', {price: totalPrice})
+      .then(res => {
+        console.log(res.data.clientSecret);
+        setClientSecret(res.data.clientSecret)
+      })
+  }, [axiosSecure, totalPrice])
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -33,15 +50,15 @@ const CheckoutForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen 
-                    bg-gradient-to-br from-indigo-50 to-indigo-100 
-                    dark:from-gray-900 dark:to-gray-800 px-4 transition-colors">
+    <div className="flex items-center justify-center min-h-screen rounded-sm
+                    bg-gradient-to-br from-indigo-200 to-indigo-100 
+                    dark:from-gray-900 dark:to-gray-600 px-4 transition-colors">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
         className="w-full max-w-md bg-white dark:bg-gray-900 
-                   shadow-lg rounded-2xl p-8 border border-gray-200 dark:border-gray-700"
+                   shadow-lg rounded-xl p-8 border border-gray-200 dark:border-gray-700"
       >
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 text-center mb-6">
           Secure Payment
@@ -59,7 +76,7 @@ const CheckoutForm = () => {
                 style: {
                   base: {
                     fontSize: '16px',
-                    color: '#1f2937', // gray-800
+                    color: '#9ca3af', // gray-800
                     '::placeholder': {
                       color: '#9ca3af', // gray-400
                     },
@@ -77,7 +94,7 @@ const CheckoutForm = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             type="submit"
-            disabled={!stripe}
+            disabled={!stripe || !clientSecret}
             className="w-full py-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 
                        transition text-white font-medium shadow-md"
           >
