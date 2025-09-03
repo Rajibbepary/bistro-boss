@@ -37,6 +37,7 @@ async function run() {
     const menuCollection = client.db('brstobossDB').collection('menu');
     const reviewCollection = client.db('brstobossDB').collection('reviews');
     const cartCollection = client.db('brstobossDB').collection('carts');
+    const paymentCollection = client.db('brstobossDB').collection('payments');
    
     
     // ===== Routes =====
@@ -230,6 +231,18 @@ app.post('/creat-payment-intent', async (req, res) =>{
     clientSecret: paymentIntent.client_secret
   })
 
+  })
+
+  app.post('/payment', async(req, res) => {
+    const payment = req.body;
+    const paymentResult = await paymentCollection.insertOne(payment);
+
+    const query = {_id: {
+      $in: payment.cartIds.map(id => new ObjectId(id))
+    }}
+    const deleteResult = await cartCollection.deleteMany(query);
+
+    res.send(paymentResult, deleteResult)
   })
 
     // Ping MongoDB to confirm successful connection
