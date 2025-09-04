@@ -54,7 +54,7 @@ async function run() {
 
 
 const verifyToken = (req, res, next) => {
-  console.log('inside verify token', req.headers.authorization);
+  //console.log('inside verify token', req.headers.authorization);
 
   if (!req.headers.authorization) {
     return res.status(401).send({ message: 'Unauthorized access' });
@@ -232,6 +232,17 @@ app.post('/creat-payment-intent', async (req, res) =>{
   })
 
   })
+
+app.get('/payments/:email', verifyToken, async (req, res) =>{
+  const query = {email: req.params.email}
+  if(req.params.email !== req.decoded.email){
+    return res.status(403).send({message: 'forbidden access'})
+  }
+  const result = await paymentCollection.find(query).toArray()
+  res.send(result)
+}) 
+
+
 
   app.post('/payment', async(req, res) => {
     const payment = req.body;

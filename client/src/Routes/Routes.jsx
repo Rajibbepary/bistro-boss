@@ -23,6 +23,7 @@ import AdminRoute from "./AdminRoute";
 import ManageItem from "../pages/AdminHome/ManageItem";
 import UpdateItem from "../pages/AdminHome/UpdateItem";
 import Payment from "../pages/UserHome/Payment";
+import PayHistory from "../pages/UserHome/PayHistory";
 
 
 export const router = createBrowserRouter([
@@ -78,6 +79,10 @@ export const router = createBrowserRouter([
       {
         path:'payment',
         element:<Payment/>
+      },
+      {
+        path:'payhistory',
+        element:<PayHistory/>
       },
       {
         path:'cart',

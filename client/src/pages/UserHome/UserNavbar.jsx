@@ -42,7 +42,7 @@ const UserNavbar = () => {
   const sidebarLinks = [
     { name: "User Home", path: "/dashboard/home", icon: home },
     { name: "Reservation", path: "/dashboard/reservation", icon: reservation },
-    { name: "Payment", path: "/dashboard/payment", icon: payment },
+    { name: "Payment", path: "/dashboard/payhistory", icon: payment },
     { name: "My Cart", path: "/dashboard/cart", icon: cart },
     { name: "Add Review", path: "/dashboard/review", icon: star },
     { name: "My Booking", path: "/chat", icon: booking },

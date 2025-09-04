@@ -63,20 +63,11 @@ const FoodCard = ({ item }) => {
         <p className="font-medium mt-3 text-xl">{name}</p>
         <p className="text-gray-500 text-sm">{recipe}</p>
 
-        <style>{`
-          .button-wrapper::before {
-              animation: spin-gradient 4s linear infinite;
-          }
-          @keyframes spin-gradient {
-              from { transform: rotate(0deg); }
-              to { transform: rotate(360deg); }
-          }
-        `}</style>
-
-        <div className="relative inline-block p-0.5 rounded-md overflow-hidden hover:scale-105 transition duration-300 active:scale-100 before:content-[''] before:absolute before:inset-0 before:bg-[conic-gradient(from_0deg,_#00F5FF,_#00F5FF30,_#00F5FF)] button-wrapper">
-          <button onClick={handleAddToCart} className="relative z-10 bg-gray-800 text-white rounded-md px-8 py-3 font-medium text-sm">
-            Add To Cart
-          </button>
+          <div className="relative group border-b-2 overflow-hidden p-0.5 h-10 w-30 rounded-md active:scale-100 hover:scale-105 transition-all duration-300">
+            <button onClick={handleAddToCart} className="text-black text-sm font-semibold bg-gradient-to-t h-full w-full rounded">
+              Add To Cart
+            </button>
+            <div className="absolute -bottom-12 group-hover:-bottom-10 transition-all duration-200 left-1/2 -z-10 -translate-x-1/2 blur size-14 rounded-full bg-black/40"></div>
         </div>
       </div>
     </div>

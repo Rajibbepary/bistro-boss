@@ -22,7 +22,7 @@ const Review = () => {
                 </div>
                 <div className="w-full">
                     <label className="text-black/70" htmlFor="name">Do you have any suggestion for us?</label>
-                    <input className="h-12 p-2 mt-2 w-full border border-gray-500/30 rounded outline-none focus:border-indigo-300" type="email" placeholder="Suggestion" required />
+                    <input className="h-12 p-2 mt-2 w-full border border-gray-500/30 rounded outline-none focus:border-indigo-300" type="text" placeholder="Suggestion" required />
                 </div>
             </div>
         

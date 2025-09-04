@@ -5,8 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import useAxiosSecure from './../../hooks/useAxiosSecure';
 import useCart from './../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+
 
 const CheckoutForm = () => {
+  const navigate = useNavigate()
   const [error, setError] = useState('');
   const [clientSecret, setClientSecret] = useState('');
   const [transactionId, setTransactionId] = useState('');
@@ -15,16 +18,18 @@ const CheckoutForm = () => {
   const elements = useElements();
   const axiosSecure = useAxiosSecure()
   const {user} = useAuth()
-  const [cart] = useCart()
+  const [cart, refetch] = useCart()
   const totalPrice = cart.reduce( (total, item) => total + item.price, 0)
 
 
   useEffect( ()=>{
-      axiosSecure.post('/creat-payment-intent', {price: totalPrice})
+      if(totalPrice > 0){
+        axiosSecure.post('/creat-payment-intent', {price: totalPrice})
       .then(res => {
         console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret)
       })
+      }
   }, [axiosSecure, totalPrice])
 
 
@@ -82,6 +87,8 @@ const CheckoutForm = () => {
     }
    const res = await axiosSecure.post('/payment', payment)
    console.log(res);
+   refetch()
+navigate('/dashboard/payhistory')
 
   }
   };
