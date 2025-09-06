@@ -1,10 +1,27 @@
 
 
+import { useQuery } from '@tanstack/react-query';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { assets } from './../../assets/assets';
 import BarChart from './BarChart';
 import PiChart from './piChart';
 
 const AddminHome = () => {
+
+
+  const axisSecure = useAxiosSecure();
+
+  const { data: stats } = useQuery({
+    queryKey: ['admin-stats'],
+    queryFn: async()=>{
+      const res = await axisSecure.get('/admin-stats');
+      return res.data;
+    }
+  })
+
+
+
+
     return (
         <div className="w-10/12 mx-auto my-4">
                     {/* small cart div */}
@@ -15,7 +32,7 @@ const AddminHome = () => {
             <div className="flex items-center space-x-4 text-white">
               <img src={assets.wallet} alt="" className="w-10" />
               <div className="flex flex-col">
-                <p className="text-2xl font-extrabold">203</p>
+                <p className="text-2xl font-extrabold">{stats.revenue}</p>
                 <p>Revenue</p>
               </div>
             </div>
@@ -26,7 +43,7 @@ const AddminHome = () => {
             <div className="flex items-center space-x-4 text-white">
               <img src={assets.customer} alt="" className="w-10" />
               <div className="flex flex-col">
-                <p className="text-2xl font-extrabold">1503</p>
+                <p className="text-2xl font-extrabold">{stats.users}</p>
                 <p>Customers</p>
               </div>
             </div>
@@ -37,7 +54,7 @@ const AddminHome = () => {
             <div className="flex items-center space-x-4 text-white">
               <img src={assets.chef} alt="" className="w-10" />
               <div className="flex flex-col">
-                <p className="text-2xl font-extrabold">103</p>
+                <p className="text-2xl font-extrabold">{stats.menuItems}</p>
                 <p>Products</p>
               </div>
             </div>
@@ -48,7 +65,7 @@ const AddminHome = () => {
             <div className="flex items-center space-x-4 text-white">
               <img src={assets.truck} alt="" className="w-10" />
               <div className="flex flex-col">
-                <p className="text-2xl font-extrabold">500</p>
+                <p className="text-2xl font-extrabold">{stats.orders}</p>
                 <p>Orders</p>
               </div>
             </div>

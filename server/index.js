@@ -258,7 +258,7 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
 
   //stats or analytics
 
-  app.get('/admin-stats', async (req, res) =>{
+  app.get('/admin-stats', verifyToken, verifyAdmin, async (req, res) =>{
     const users = await userCollection.estimatedDocumentCount();
     const menuItems = await menuCollection.estimatedDocumentCount();
     const orders = await paymentCollection.estimatedDocumentCount();
@@ -279,7 +279,7 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
    ]).toArray();
 
    const revenue = result.length > 0 ? result[0].totalRevenue : 0;
-   
+
 
 
    res.send({
