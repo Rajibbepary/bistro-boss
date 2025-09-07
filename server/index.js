@@ -290,6 +290,46 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
     })
   })
 
+
+  //ussing aggregate pipeline
+
+  app.get('/order-stats',  async (req, res) => {
+  const result = await paymentCollection.aggregate([
+    {
+      $unwind: '$menuItemIds'
+    },
+    {
+      $lookup: {
+        from: 'menu',
+        localField: 'menuItemIds',
+        foreignField: '_id',   // fixed typo
+        as: 'menuItems'
+      }
+    },
+    {
+      $unwind: '$menuItems'
+    },
+    {
+      $group: {
+        _id: '$menuItems.category',
+        quantity: { $sum: 1 },
+        revenue: { $sum: '$menuItems.price' }
+      }
+    },
+    {
+      $project: {
+        _id: 0,
+        category: '$_id',
+        quantity: 1,
+        revenue: 1
+      }
+    }
+  ]).toArray();
+
+  res.send(result);
+});
+
+  ///
     // Ping MongoDB to confirm successful connection
     await client.db("admin").command({ ping: 1 });
 
