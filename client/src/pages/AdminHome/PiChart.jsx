@@ -1,16 +1,9 @@
-import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 const RADIAN = Math.PI / 180;
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
-const PiChart = () => {
-  const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-  ];
-
+const PiChart = ({ chartData }) => {
   const renderCustomizedLabel = ({
     cx,
     cy,
@@ -41,22 +34,25 @@ const PiChart = () => {
       <ResponsiveContainer>
         <PieChart>
           <Pie
-            data={data}
+            data={chartData}
             cx="50%"
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
             outerRadius={120}
             fill="#8884d8"
-            dataKey="value"
+            dataKey="revenue"
+            stroke="none"   //  removes border between slices
           >
-            {data.map((entry, index) => (
+            {chartData.map((entry, index) => (
               <Cell
                 key={`cell-${entry.name}`}
                 fill={COLORS[index % COLORS.length]}
               />
             ))}
           </Pie>
+          <Tooltip />
+          <Legend />
         </PieChart>
       </ResponsiveContainer>
     </div>

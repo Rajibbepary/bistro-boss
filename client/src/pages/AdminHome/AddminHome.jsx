@@ -3,8 +3,8 @@
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { assets } from './../../assets/assets';
-import BarChart from './BarChart';
 import PiChart from './piChart';
+import BarCharts from './BarCharts';
 
 const AddminHome = () => {
 
@@ -81,8 +81,8 @@ const AddminHome = () => {
         </div>
         
          <div className='flex justify-center items-center md:flex-row flex-col'>
-           <BarChart chartData={chartData} />
-         <PiChart/>
+           <BarCharts chartData={chartData} />
+        <PiChart chartData={chartData}/>
          </div>
          
      </div>
