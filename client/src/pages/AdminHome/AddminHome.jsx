@@ -19,6 +19,14 @@ const AddminHome = () => {
     }
   })
 
+  const { data: chartData =[] } = useQuery({
+    queryKey: ['order-stats'],
+    queryFn: async()=>{
+      const res = await axisSecure.get('/order-stats');
+      return res.data;
+    }
+  })
+
 
 
 
@@ -73,7 +81,7 @@ const AddminHome = () => {
         </div>
         
          <div className='flex justify-center items-center md:flex-row flex-col'>
-           <BarChart/>
+           <BarChart chartData={chartData} />
          <PiChart/>
          </div>
          
