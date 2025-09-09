@@ -9,8 +9,6 @@ import Order from "../pages/Order/Order/Order";
 import Contact from "../pages/Contact/Contact";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
-import Secret from "../pages/Shared/Secret/Secret";
-import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import UserHome from "../pages/UserHome/UserHome";
 import Mycart from "../pages/UserHome/Mycart";
@@ -55,12 +53,7 @@ export const router = createBrowserRouter([
           path:'signup',
           element:<SignUp/>
         },
-        {
-          path:'secret',
-          element:<PrivateRoute>
-            <Secret/>
-          </PrivateRoute>
-        }
+        
     ]
   },
 

@@ -3,11 +3,15 @@ import { assets } from "../assets/assets";
 import UserNavbar from "../pages/UserHome/UserNavbar";
 import AdminSidebar from "../pages/AdminHome/AdminSidebar";
 import useAdmin from "../hooks/useAdmin";
+import { useContext } from 'react';
+import { AuthContext } from './../providers/AuthProviders';
 
 const Dashboard = () => {
 
     const [isAdmin] = useAdmin()
-   
+   const {user} = useContext(AuthContext);
+
+    console.log(user);
     
     return (
         <>
@@ -16,8 +20,16 @@ const Dashboard = () => {
                     <img className="h-9" src={assets.logo}/>
                 </Link>
                 <div className="flex items-center gap-5 text-gray-500">
-                    <p>Hi! Admin</p>
-                    <button className='border rounded-full text-sm px-4 py-1'>Logout</button>
+                    <p>Hi! {user?.displayName}</p>
+                    <div className=" border-2 rounded-full border-green-600">
+                         <img
+                  referrerPolicy='no-referrer'
+                  alt='User Profile Photo'
+                  src={user?.photoURL}
+                  className='w-10 h-10 object-cover rounded-full'
+                />
+                    </div>
+                    {/* <button className='border rounded-full text-sm px-4 py-1'>Logout</button> */}
                 </div>
             </div>
 

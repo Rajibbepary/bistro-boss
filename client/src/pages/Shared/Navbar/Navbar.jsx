@@ -83,6 +83,7 @@ const Navbar = () => {
               className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg"
             >
               {user ? "Logout" : "Login"}
+             
             </button>
           </div>
         </div>
