@@ -47,8 +47,8 @@ const Navbar = () => {
 
         {/* Menu Links */}
         <div
-          className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-16 right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${
-            open ? "max-sm:translate-x-0" : "max-sm:translate-x-full"
+          className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-12 right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${
+            open ? "max-sm:translate-x-0 bg-black/30 md:bg-none" : "max-sm:translate-x-full "
           }`}
         >
           {menuLinks.map((link, index) => {
@@ -80,7 +80,7 @@ const Navbar = () => {
           <div className="flex max-sm:flex-col items-start sm:items-center gap-6">
             <button
               onClick={handleAuthButtonClick}
-              className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg"
+              className="cursor-pointer md:px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg"
             >
               {user ? "Logout" : "Login"}
              
