@@ -279,9 +279,6 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
    ]).toArray();
 
    const revenue = result.length > 0 ? result[0].totalRevenue : 0;
-
-
-
    res.send({
       users,
       menuItems,

@@ -11,6 +11,7 @@ import {
     signOut,
     updateProfile
 } from "firebase/auth";
+
 import { app } from "../firebase/firebase.config";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
@@ -26,9 +27,7 @@ const AuthProviders = ({ children }) => {
 
     // Loading state to indicate if auth is being checked
     const [loading, setLoading] = useState(true);
-
     const googleProvider = new GoogleAuthProvider()
-
     const axiosPublic = useAxiosSecure();
     // Function to create a new user with email and password
     const createUser = (email, password) => {

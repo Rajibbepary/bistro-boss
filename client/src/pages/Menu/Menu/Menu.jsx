@@ -9,8 +9,7 @@ import pizzaImage from '../../../assets/menu/pizza-bg.jpg'
 import saladImage from '../../../assets/menu/salad-bg.jpg'
 import suopImage from '../../../assets/menu/soup-bg.jpg'
 const Menu = ( ) => {
-const [menu] = useMenu()
-  
+    const [menu] = useMenu()
     const salad = menu.filter(item => item.category === 'salad')
     const drinks = menu.filter(item => item.category === 'drinks')
     const dessert = menu.filter(item => item.category === 'dessert')
