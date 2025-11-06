@@ -22,11 +22,13 @@ import ManageItem from "../pages/AdminHome/ManageItem";
 import UpdateItem from "../pages/AdminHome/UpdateItem";
 import Payment from "../pages/UserHome/Payment";
 import PayHistory from "../pages/UserHome/PayHistory";
+import NotFound from "../components/NotFound";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement:<NotFound/>,
     element: <Main/>,
     children:[
         {

@@ -24,11 +24,11 @@ const auth = getAuth(app);
 const AuthProviders = ({ children }) => {
     // State to hold the current user
     const [user, setUser] = useState(null);
-
     // Loading state to indicate if auth is being checked
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider()
     const axiosPublic = useAxiosSecure();
+
     // Function to create a new user with email and password
     const createUser = (email, password) => {
         setLoading(true);

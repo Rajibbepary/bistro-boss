@@ -22,7 +22,7 @@ const Navbar = () => {
   };
 
   const handleAuthButtonClick = () => {
-    if (user) {
+    if (user){
       handleLogOut();
     } else {
       navigate("/login"); // Redirect to login
