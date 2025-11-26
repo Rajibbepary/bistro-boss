@@ -12,7 +12,7 @@ const NotFound = () => {
                 <a href="/" className="bg-gray-800 hover:bg-black px-7 py-2.5 text-white rounded-md active:scale-95 transition-all">
                     Return Home
                 </a>
-                <a href="/contact" className="border border-gray-300 px-7 py-2.5 text-gray-800 rounded-md active:scale-95 transition-all">
+        <a href="/contact" className="border border-gray-300 px-7 py-2.5 text-gray-800 rounded-md active:scale-95 transition-all">
                     Contact support
                 </a>
             </div>
