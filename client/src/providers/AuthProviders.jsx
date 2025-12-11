@@ -93,7 +93,7 @@ const signInWithGoogle = () =>{
         loading,
         createUser,
         signIn,
-      signInWithGoogle,
+        signInWithGoogle,
         logOut,
         updateUserProfile
     };
