@@ -20,7 +20,7 @@ const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
     
     // Email Password Signin
-    const handleSignIn =  e => {
+    const handleSignIn = e => {
       e.preventDefault()
       const form = e.target
       const email = form.email.value

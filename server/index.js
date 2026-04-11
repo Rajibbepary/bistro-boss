@@ -30,7 +30,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     // Connect the client to MongoDB server
-   // await client.connect();
+    await client.connect();
 
     // Define database and collections
     const userCollection = client.db('brstobossDB').collection('users');
@@ -249,7 +249,7 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
     }}
     const deleteResult = await cartCollection.deleteMany(query);
 
-    res.send(paymentResult, deleteResult)
+    res.send({paymentResult,deleteResult})
   })
 
   //stats or analytics
