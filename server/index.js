@@ -15,6 +15,7 @@ app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // Parse incoming JSON requests
 
 // ===== MongoDB Connection URI =====
+
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.i8aog.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // ===== MongoDB Client Setup with API version =====
@@ -79,8 +80,6 @@ const verifyAdmin = async(req, res, next) =>{
   }
   next();
 }
-
-
 
    //user Related Api 
    app.get('/users', verifyToken, verifyAdmin, async (req, res) =>{
