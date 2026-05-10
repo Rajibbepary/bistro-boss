@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Create axios instance
 const axiosSecure = axios.create({
-  baseURL: "https://server-lake-phi-87.vercel.app",
+  baseURL: 'http://localhost:5000',
 });
 
 const useAxiosSecure = (logOut) => {

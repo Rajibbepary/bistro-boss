@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <div className="fixed w-full z-10 bg-black/30">
       <div
-        className={`flex items-center justify-between px-4 md:px-12 lg:px-12 xl:px-24 py-4 text-white relative transition-all ${
+        className={`flex items-center justify-between px-4 md:px-12 lg:px-16 xl:px-24 py-4 text-white relative transition-all ${
           location.pathname === "/" && "bg-light"
         }`}
       >
