@@ -55,7 +55,7 @@ const SignUp = () => {
         console.log("DB User:", userInfo);
 
         const dbRes = await axiosPublic.post("/users", userInfo);
-        if (dbRes.data.insertedId) {
+        if(dbRes.data.insertedId) {
           reset();
           toast.success("Signup Successful!");
           navigate("/");
