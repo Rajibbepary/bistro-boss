@@ -54,7 +54,7 @@ const FoodCard = ({ item }) => {
 
   return (
     <div className="bg-white relative rounded-2xl pb-4 overflow-hidden border border-gray-500/30">
-      <img className="w-full object-cover object-top" src={image} alt={name} />
+      <img className="w-full object-cover object-top group-hover:shadow-xl hover:-translate-y-0.5 duration-300 transition-all" src={image} alt={name} />
       <p className="bg-slate-950 text-white absolute right-0 top-0 mr-4 mt-4 px-3 py-1 rounded-md">
         ${price}
       </p>

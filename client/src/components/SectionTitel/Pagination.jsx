@@ -21,7 +21,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             onClick={() => onPageChange(num)}
             className={`w-9 h-9 md:w-12 md:h-12 rounded-md ${
               num === currentPage
-                ? "bg-indigo-500 text-white"
+                ? "bg-black text-white"
                 : "bg-white border border-gray-300 hover:bg-gray-100"
             }`}
           >
