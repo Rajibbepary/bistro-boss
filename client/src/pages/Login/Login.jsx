@@ -16,9 +16,8 @@ const navigate = useNavigate()
   const from = location.state?.from?.pathname || "/";
   console.log('state in the location login page', location.state)
   const { signIn, signInWithGoogle} = useContext(AuthContext);
-   
   const [showPassword, setShowPassword] = useState(false)
-    
+  
     // Email Password Signin
     const handleSignIn = e => {
       e.preventDefault()
