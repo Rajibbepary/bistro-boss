@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import useCart from '../../../hooks/useCart';
 
 const FoodCard = ({ item }) => {
-  const { image, name, recipe, price, _id } = item;
+  const { image, name, price, _id } = item;
   const {user} = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -61,7 +61,7 @@ const FoodCard = ({ item }) => {
 
       <div className="flex flex-col items-center text-center p-4 space-y-2">
         <p className="font-medium mt-3 text-xl">{name}</p>
-        <p className="text-gray-500 text-sm">{recipe}</p>
+        {/* <p className="text-gray-500 text-sm">{recipe}</p> */}
 
           <div className="relative group border-b-2 overflow-hidden p-0.5 h-10 w-30 rounded-md active:scale-100 hover:scale-105 transition-all duration-300">
             <button onClick={handleAddToCart} className="text-black text-sm font-semibold bg-gradient-to-t h-full w-full rounded">

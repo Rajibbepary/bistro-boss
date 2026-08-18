@@ -51,11 +51,11 @@ const ManageItem = () => {
                     <table className="md:table-auto table-fixed w-full overflow-hidden">
                         <thead className="text-white/80 text-sm text-left bg-[#D1A054]">
                             <tr>
-                                <th className="px-4 py-3 font-semibold truncate">IMAGE</th>
-                                 <th className="px-4 py-3 font-semibold truncate">NAME</th>
-                                <th className="px-4 py-3 font-semibold truncate">PRICE</th>
-                                <th className="px-4 py-3 font-semibold truncate">ACTION</th>
-                                 <th className="px-4 py-3 font-semibold truncate">ACTION</th>
+                                <th className="px-4 py-3 font-semibold truncate">Image</th>
+                                 <th className="px-4 py-3 font-semibold truncate">Name</th>
+                                <th className="px-4 py-3 font-semibold truncate">Price</th>
+                                <th className="px-4 py-3 font-semibold truncate">Update</th>
+                                 <th className="px-4 py-3 font-semibold truncate">Delete</th>
                             </tr>
                         </thead>
                         <tbody className="text-sm text-gray-500">

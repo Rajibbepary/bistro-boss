@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 import { assets } from "../assets/assets";
-import UserNavbar from "../pages/UserHome/UserNavbar";
+import UserSidebar from "../pages/UserHome/UserSidebar";
 import AdminSidebar from "../pages/AdminHome/AdminSidebar";
 import useAdmin from "../hooks/useAdmin";
 import { useContext } from 'react';
@@ -8,8 +8,8 @@ import { AuthContext } from './../providers/AuthProviders';
 
 const Dashboard = () => {
 
-    const [isAdmin] = useAdmin()
-    
+     const [isAdmin] = useAdmin()
+
    const {user} = useContext(AuthContext);
 
     console.log(user);
@@ -39,7 +39,7 @@ const Dashboard = () => {
             isAdmin ? <>
             <AdminSidebar/>
             </> : <>
-             <UserNavbar/>
+             <UserSidebar/>
             </>
            }
 

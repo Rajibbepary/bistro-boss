@@ -59,7 +59,7 @@ const Navbar = () => {
                 to={link.path}
                 className={`transition-all ${
                   isActive
-                    ? "text-[#EEFF25] font-semibold  max-sm:text-black max-sm:bg-white px-1 max-sm:rounded-sm"
+                    ? "text-orange-500 font-semibold  max-sm:text-black max-sm:bg-white px-1 max-sm:rounded-sm"
                     : "lg:text-[#FFFFFF] max-sm:text-[#EEFF25]"
                 }`}
               >

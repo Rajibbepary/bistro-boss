@@ -2,12 +2,9 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-
 const PrivateRoute = ({children}) => {
     const { user, loading} = useAuth()
     const location = useLocation();
-
-
     if(loading){
         return <div class="relative w-12 h-12 rounded-full rotate-45 [perspective:1000px] text-white">
                 <div class="absolute inset-0 rounded-full rotate-x-[70deg] animate-spinCustom"></div>
