@@ -324,18 +324,20 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
 
   ///
     // Ping MongoDB to confirm successful connection
+    // This line is command Todo 
     await client.db("admin").command({ ping: 1 });
 
   } finally {
     // Optional: Close the connection when finished
-    // await client.close();
+     //await client.close();
   }
 }
+
 
 // Run the async function and catch errors
 run().catch(console.dir);
 
-// ===== Default Route =====
+// // ===== Default Route =====
 app.get('/', (req, res) => {
   res.send('boss is sitting');
 });
