@@ -29,7 +29,7 @@ const Mycart = () => {
                       <h2 className="text-lg font-medium">TOTAL PRICE: {totalprice}</h2>
                     
                     <Link to='/dashboard/payment'>
-                      <button className="bg-orange-400 w-[60px] h-[40px] rounded-md mr-16">PAY</button>
+                      <button className="bg-[#CE2828] w-[60px] h-[40px] rounded-md mr-16">PAY</button>
                     </Link>
                 </div>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">

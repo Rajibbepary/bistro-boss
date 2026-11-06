@@ -15,7 +15,7 @@ const Contact = () => {
             <div className="w-10/12 my-10 mx-auto grid md:grid-cols-3 gap-4">
             {/* card-1 */}
                 <div className=" w-ful bg-white box-border border text-center border-[#e8e8e8]">
-                        <div className="w-full flex justify-center items-center p-4 bg-[rgb(209,160,84)]">
+                        <div className="w-full flex justify-center items-center p-4 bg-[#CE2828]">
                    <FaPhoneVolume className=" text-white" />
                     </div>
                     <div className="pt-0 pr-5 pb-5 pl-5">
@@ -28,7 +28,7 @@ const Contact = () => {
                 </div>
                 {/* card-2 */}
                  <div className=" w-ful bg-white box-border border text-center border-[#e8e8e8]">
-                        <div className="w-full flex justify-center items-center p-4 bg-[rgb(209,160,84)]">
+                        <div className="w-full flex justify-center items-center p-4 bg-[#CE2828]">
                         <FaLocationDot className='text-white' />
                     </div>
                     <div className="pt-0 pr-5 pb-5 pl-5">
@@ -41,7 +41,7 @@ const Contact = () => {
                 </div>
                 {/* card-3 */}
                  <div className=" w-ful bg-white box-border border text-center border-[#e8e8e8]">
-                        <div className="w-full flex justify-center items-center p-4 bg-[rgb(209,160,84)]">
+                        <div className="w-full flex justify-center items-center p-4 bg-[#CE2828]">
                    <MdAccessTimeFilled className='text-white' />
                     </div>
                     <div className="pt-0 pr-5 pb-5 pl-5">
@@ -90,7 +90,7 @@ const Contact = () => {
                 <textarea className="w-full mt-2 p-2 h-40 border border-gray-500/30 rounded resize-none outline-none focus:border-indigo-300" required></textarea>
             </div>
         
-            <button type="submit" className="mt-5 flex justify-center items-center bg-gradient-to-r from-[#835d23] to-[#b58130] text-white h-12 w-56 px-4 rounded active:scale-95 transition">Send Message <IoIosSend className="ml-2 text-xl" /></button>
+            <button type="submit" className="mt-5 flex justify-center items-center bg-gradient-to-r from-[#CE2828] to-[#b58130] text-white h-12 w-56 px-4 rounded active:scale-95 transition">Send Message <IoIosSend className="ml-2 text-xl" /></button>
         </form>
             </div>
 

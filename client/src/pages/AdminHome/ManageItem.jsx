@@ -49,7 +49,7 @@ const ManageItem = () => {
                 </div>
                 <div className="flex flex-col items-center max-w-4xl w-full overflow-hidden rounded-md bg-white border border-gray-500/20">
                     <table className="md:table-auto table-fixed w-full overflow-hidden">
-                        <thead className="text-white/80 text-sm text-left bg-[#D1A054]">
+                        <thead className="text-white/80 text-sm text-left bg-[#CE2828]">
                             <tr>
                                 <th className="px-4 py-3 font-semibold truncate">Image</th>
                                  <th className="px-4 py-3 font-semibold truncate">Name</th>
@@ -71,11 +71,11 @@ const ManageItem = () => {
                                     <td className="px-4 py-3">{item.price}</td>
                                     <td className="px-8 ">
                                        <Link to={`/dashboard/updateItem/${item._id}`}>
-                                        <button  className="bg-[#D1A054] p-2 rounded-sm">< FaPenToSquare className=" text-white/80"/></button>
+                                        <button  className="bg-[#CE2828] p-2 rounded-sm">< FaPenToSquare className=" text-white/80"/></button>
                                        </Link>
                                     </td>
                                     <td className="px-8 ">
-                                        <button className="p-2 rounded-sm bg-[#B91C1C]" onClick={() => handleDelete(item)}><RiDeleteBinLine className="text-white/80 " /></button>
+                                        <button className="p-2 rounded-sm bg-[#CE2828]" onClick={() => handleDelete(item)}><RiDeleteBinLine className="text-white/80 " /></button>
                                     </td>
                                 </tr>
                             ))}

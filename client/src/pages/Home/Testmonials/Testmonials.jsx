@@ -32,7 +32,7 @@ const Testmonials = () => {
               />
               <FaQuoteLeft className="text-5xl mt-6 mb-6" />
               <p className="py-4">{review.details}</p>
-              <h1 className="text-2xl text-orange-400">{review.name}</h1>
+              <h1 className="text-2xl text-[#CE2828]">{review.name}</h1>
             </div>
           </SwiperSlide>
         ))}

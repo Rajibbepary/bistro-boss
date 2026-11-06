@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="w-full flex flex-col">
             <div className="grid lg:grid-cols-2">
                 <div className="py-8 flex flex-col items-center text-[hsla(0,0%,101%,1)] bg-[hsla(215,27%,17%,1)]">
-                    <h2 className="text-[32px] font-semibold ">CONTACT US</h2>
+                    <h2 className="text-[32px] font-semibold text-[#CE2828] ">CONTACT US</h2>
                     <div className="flex flex-col items-center gap-3 py-3">
                         <p> 123 ABS Street, Uni 21, Bangladesh</p>
                        <p> +88 123456789</p>

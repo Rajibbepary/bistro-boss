@@ -25,7 +25,7 @@ const AdminSidebar = () => {
             key={path}
             className={`flex items-center py-3 px-4 gap-3 transition-colors duration-200 ${
               isActive
-                ? "border-r-4 md:border-r-[6px] bg-indigo-500/10 border-orange-500 text-orange-500"
+                ? "border-r-4 md:border-r-[6px] bg-indigo-500/10 border-[#CE2828] text-[#CE2828] font-semibold"
                 : "hover:bg-gray-100/90 text-gray-700"
             }`}
           >

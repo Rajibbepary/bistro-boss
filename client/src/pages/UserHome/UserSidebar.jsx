@@ -58,7 +58,7 @@ const UserNavbar = () => {
             key={index}
             className={`flex items-center py-3 px-4 gap-3 ${
               isActive
-                ? "border-r-4 md:border-r-[6px] bg-indigo-500/10 border-orange-500 text-orange-500"
+                ? "border-r-4 md:border-r-[6px] bg-indigo-500/10 border-[#CE2828] text-[#CE2828] font-semibold"
                 : "hover:bg-gray-100/90 border-white text-gray-700"
             }`}
           >

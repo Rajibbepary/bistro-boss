@@ -59,8 +59,8 @@ const Navbar = () => {
                 to={link.path}
                 className={`transition-all ${
                   isActive
-                    ? "text-orange-500 font-semibold  max-sm:text-black max-sm:bg-white px-1 max-sm:rounded-sm"
-                    : "lg:text-[#FFFFFF] max-sm:text-[#EEFF25]"
+                    ? "text-[#CE2828] font-semibold  max-sm:text-black max-sm:bg-white px-1 max-sm:rounded-sm"
+                    : "lg:text-[#FFFFFF] max-sm:text-[#CE2828]"
                 }`}
               >
                 {link.name}
@@ -71,7 +71,7 @@ const Navbar = () => {
           })}
       <div className="flex relative">
           <FaCartPlus className="text-2xl" />
-          <div className="absolute top-0 left-2  bg-red-500 text-white text-xs rounded-md px-1">
+          <div className="absolute top-0 left-2  bg-[#CE2828] text-white text-xs rounded-md px-1">
             +{cart.length}
           </div>
         </div>
