@@ -337,7 +337,7 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
 // Run the async function and catch errors
 run().catch(console.dir);
 
-// // ===== Default Route =====
+// ===== Default Route =====
 app.get('/', (req, res) => {
   res.send('boss is sitting');
 });
