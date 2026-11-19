@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import registerLottie from "../../assets/lottie/Animation - 1734804789886.json";
-import logo from "../../assets/home/logo.png";
+import logo from "../../assets/icon/logo.png";
 import { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
