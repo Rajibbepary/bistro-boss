@@ -10,6 +10,7 @@ import saladImage from '../../../assets/menu/salad-bg.jpg'
 import suopImage from '../../../assets/menu/soup-bg.jpg'
 const Menu = ( ) => {
     const [menu] = useMenu()
+    const chicken = menu.filter(item => item.category === 'chicken')
     const salad = menu.filter(item => item.category === 'salad')
     const drinks = menu.filter(item => item.category === 'drinks')
     const dessert = menu.filter(item => item.category === 'dessert')
@@ -21,6 +22,7 @@ const Menu = ( ) => {
         <div>
            <Cover image={Bannerimg}  titel={'Our Menu'} subtitel={'WORLD YOU LIKE TO TRY DISH?'}/>
            <SectionTitel subHeading={"Don't miss"} heading={"TODAY' OFFER"}/>
+           <MenuCategory items={chicken} titel={'chicken'} />
            <MenuCategory items={offered} titel={'salad'} />
            <Cover image={dessertsimg}  titel={'dessert'} subtitel={'Healthy Gelato Treats — Tiny treats, big satisfaction – indulge in our low-calories, gluten-free mini sticks!'}/>
             <MenuCategory items={dessert} titel={'salad'} />

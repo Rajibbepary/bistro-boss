@@ -11,11 +11,11 @@ const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key
 
 const AddItems = () => {
     
- const {register,handleSubmit, reset} = useForm()
+ const {register,handleSubmit, reset, formState: { isSubmitting },} = useForm()
  const axiosPublic = useAxiosPublic()
  const axiosSecure = useAxiosSecure()
  
- 
+
  const onSubmit = async (data) => {
   if(!data.image || data.image.length === 0){
     toast.error("Please select an image");
@@ -78,7 +78,7 @@ const AddItems = () => {
                        <label className="text-sm text-gray-500" htmlFor="category">Category*</label>
                     <select  {...register("category")} id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
                         <option value="">Select Category</option>
-                        {[{ name: 'salad' }, { name: 'pizza' },  { name: 'drinks' }, { name: 'dessert' }, { name: 'soup' }].map((item, index) => (
+                        {[{ name: 'chicken' },{ name: 'salad' }, { name: 'pizza' },  { name: 'drinks' }, { name: 'dessert' }, { name: 'soup' }].map((item, index) => (
                             <option  key={index} value={item.name}>{item.name}</option>
                         ))}
                     </select>
@@ -89,7 +89,27 @@ const AddItems = () => {
                     </div>
                 </div>
 
-                 <button type="submit" className="px-8 py-2.5 flex items-center font-medium rounded bg-gradient-to-r from-[hsla(36,57%,33%,1)] from-10% via-[hsla(36,57%,33%,1)] via-30% to-[hsla(36,58%,45%,1)] to-90% text-white"> Add Item <FaUtensils/> </button>
+                <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`px-8 py-3 flex items-center justify-center gap-2 font-semibold rounded-lg text-white transition-all duration-300 shadow-md
+                    ${
+                        isSubmitting
+                        ? "bg-gray-400 cursor-not-allowed opacity-70"
+                        : "bg-[#D93832] hover:bg-[#B92424] hover:shadow-lg active:scale-95"
+                    }`}
+                    >
+                {isSubmitting ? (
+                    <>
+                    <span className="loading loading-spinner loading-sm"></span>
+                    Adding Item...
+                    </>
+                ) : (
+                    <>
+                    Add Item <FaUtensils />
+                    </>
+                )}
+</button>
             </form>
         </div>
         </div>

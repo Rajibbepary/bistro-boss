@@ -11,7 +11,6 @@ const Home = () => {
         <div>
            <Banner/>
            <Category/>
-          
            <HomeBanner/>
            <PopularMeno/>
            <Featured/>
