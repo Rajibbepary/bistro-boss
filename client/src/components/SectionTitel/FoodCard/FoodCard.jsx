@@ -4,7 +4,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { toast } from 'react-toastify';
 import useCart from '../../../hooks/useCart';
-
+import { FaShoppingCart, FaEye } from "react-icons/fa";
 const FoodCard = ({ item }) => {
   const { image, name, price, _id } = item;
   const {user} = useAuth();
@@ -53,25 +53,54 @@ const FoodCard = ({ item }) => {
 
 
   return (
-    <div className="bg-white relative rounded-2xl pb-4 overflow-hidden border border-gray-500/30">
-      <img className="w-full object-cover object-top group-hover:shadow-xl hover:-translate-y-0.5 duration-300 transition-all" src={image} alt={name} />
-      <p className="bg-slate-950 text-white absolute right-0 top-0 mr-4 mt-4 px-3 py-1 rounded-md">
-        ${price}
+  <div className="group bg-white relative rounded-3xl overflow-hidden border border-gray-200/70 shadow-sm hover:shadow-lg transition-all duration-300">
+
+    {/* Food Image */}
+    <div className="relative overflow-hidden">
+      <img
+        className="w-full h-[350px] md:h-[400px] object-cover object-center group-hover:scale-105 transition-transform duration-500"
+        src={image}
+        alt={name}
+      />
+    </div>
+
+    {/* Card Content */}
+    <div className="p-5 flex flex-col gap-3">
+
+      {/* Food Name */}
+      <h3 className="text-2xl text-left md:text-2xl font-normal text-[#D93832] line-clamp-1">
+        {name}
+      </h3>
+
+      {/* Price */}
+      <p className="text-xl text-left text-gray-900 font-medium">
+        ৳ {price}.00
       </p>
 
-      <div className="flex flex-col items-center text-center p-4 space-y-2">
-        <p className="font-medium mt-3 text-xl">{name}</p>
-        {/* <p className="text-gray-500 text-sm">{recipe}</p> */}
+      {/* Action Buttons */}
+      <div className="flex items-center justify-between mt-2">
 
-          <div className="relative group border-b-2 overflow-hidden p-0.5 h-10 w-30 rounded-md active:scale-100 hover:scale-105 transition-all duration-300">
-            <button onClick={handleAddToCart} className="text-black text-sm font-semibold bg-gradient-to-t h-full w-full rounded">
-              Add To Cart
-            </button>
-            <div className="absolute -bottom-12 group-hover:-bottom-10 transition-all duration-200 left-1/2 -z-10 -translate-x-1/2 blur size-14 rounded-full bg-black/40"></div>
-        </div>
+        {/* Add To Cart */}
+        <button
+          onClick={handleAddToCart}
+          className="flex items-center gap-2 text-[#D93832] text-base hover:text-[#B92424] hover:scale-105 transition-all duration-300"
+        >
+          <FaShoppingCart />
+          <span>Add to cart</span>
+        </button>
+
+        {/* Quick View */}
+        <button
+          className="flex items-center gap-2 text-[#D93832] text-base hover:text-[#B92424] hover:scale-105 transition-all duration-300"
+        >
+          <FaEye />
+          <span>Quick View</span>
+        </button>
+
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 export default FoodCard;
