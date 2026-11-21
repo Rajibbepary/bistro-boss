@@ -13,7 +13,7 @@ const FoodTab = ({ items }) => {
 
   return (
     <>
-      <div className="grid md:grid-cols-3 grid-cols-1 gap-10">
+      <div className="grid md:grid-cols-4 grid-cols-1 gap-5">
         {currentItems.map((item) => (
           <FoodCard key={item._id} item={item} />
         ))}

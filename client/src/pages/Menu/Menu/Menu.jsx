@@ -16,14 +16,12 @@ const Menu = ( ) => {
     const dessert = menu.filter(item => item.category === 'dessert')
     const pizza = menu.filter(item => item.category === 'pizza')
     const soup = menu.filter(item => item.category === 'soup')
-    const  offered = menu.filter(item => item.category === 'offered')
    
     return (
         <div>
            <Cover image={Bannerimg}  titel={'Our Menu'} subtitel={'WORLD YOU LIKE TO TRY DISH?'}/>
            <SectionTitel subHeading={"Don't miss"} heading={"TODAY' OFFER"}/>
            <MenuCategory items={chicken} titel={'chicken'} />
-           <MenuCategory items={offered} titel={'salad'} />
            <Cover image={dessertsimg}  titel={'dessert'} subtitel={'Healthy Gelato Treats — Tiny treats, big satisfaction – indulge in our low-calories, gluten-free mini sticks!'}/>
             <MenuCategory items={dessert} titel={'salad'} />
               <Cover image={pizzaImage}  titel={'pizza'} subtitel={'Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce'}/>

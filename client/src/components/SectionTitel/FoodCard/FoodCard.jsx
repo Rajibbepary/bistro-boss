@@ -53,12 +53,12 @@ const FoodCard = ({ item }) => {
 
 
   return (
-  <div className="group bg-white relative rounded-3xl overflow-hidden border border-gray-200/70 shadow-sm hover:shadow-lg transition-all duration-300">
+  <div className="group bg-white relative rounded-xl overflow-hidden border border-gray-200/70 shadow-sm hover:shadow-lg transition-all duration-300">
 
     {/* Food Image */}
     <div className="relative overflow-hidden">
       <img
-        className="w-full h-[350px] md:h-[400px] object-cover object-center group-hover:scale-105 transition-transform duration-500"
+        className="w-full h-[200px]  object-cover object-center group-hover:scale-105 transition-transform duration-500"
         src={image}
         alt={name}
       />
@@ -85,16 +85,16 @@ const FoodCard = ({ item }) => {
           onClick={handleAddToCart}
           className="flex items-center gap-2 text-[#D93832] text-base hover:text-[#B92424] hover:scale-105 transition-all duration-300"
         >
-          <FaShoppingCart />
-          <span>Add to cart</span>
+          <FaShoppingCart className='w-3' />
+          <span className='text-sm'>Add to cart</span>
         </button>
-
+ 
         {/* Quick View */}
         <button
           className="flex items-center gap-2 text-[#D93832] text-base hover:text-[#B92424] hover:scale-105 transition-all duration-300"
         >
-          <FaEye />
-          <span>Quick View</span>
+          <FaEye className='w-3' />
+          <span className='text-sm'>Quick View</span>
         </button>
 
       </div>
