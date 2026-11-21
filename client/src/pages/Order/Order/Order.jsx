@@ -7,7 +7,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import {useParams} from 'react-router'
 const Order = () => {
-    const categories = ['chicken', 'pizza', 'dessert', 'drinks']
+    const categories = ['salad','chicken', 'pizza', 'dessert', 'drinks']
     const {category} = useParams();
     const initialIndex = categories.indexOf(category)
     const [tabIndex, setTabIndex] = useState(initialIndex)
