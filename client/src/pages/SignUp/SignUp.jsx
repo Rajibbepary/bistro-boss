@@ -230,12 +230,13 @@ const SignUp = () => {
 
               {/* Submit Button */}
               <div className="mt-6">
-                <button
-                  type="submit"
-                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
-                >
-                  Sign Up
-                </button>
+               <button
+                      type='submit' 
+                      
+                       className='w-full px-6 py-3 text-sm font-semibold tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#CE2828] rounded-lg hover:bg-[#ffffff] hover:text-[#CE2828] hover:outline hover:outline-[#CE2828]  focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
+                    >
+                      Sing Up
+                    </button>
               </div>
             </form>
 
