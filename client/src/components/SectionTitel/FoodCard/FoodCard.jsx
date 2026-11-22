@@ -11,7 +11,6 @@ import { FaShoppingCart, FaEye, FaTimes } from "react-icons/fa";
 
 const FoodCard = ({ item }) => {
   const { image, name, price, _id, recipe } = item;
-console.log(item)
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();

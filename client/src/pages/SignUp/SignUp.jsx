@@ -235,7 +235,7 @@ const SignUp = () => {
                       
                        className='w-full px-6 py-3 text-sm font-semibold tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#CE2828] rounded-lg hover:bg-[#ffffff] hover:text-[#CE2828] hover:outline hover:outline-[#CE2828]  focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50'
                     >
-                      Sing Up
+                       Sign Up
                     </button>
               </div>
             </form>

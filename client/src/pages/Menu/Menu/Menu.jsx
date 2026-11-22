@@ -12,7 +12,7 @@ const Menu = ( ) => {
     const [menu] = useMenu()
     const chicken = menu.filter(item => item.category === 'chicken')
     const salad = menu.filter(item => item.category === 'salad')
-    const drinks = menu.filter(item => item.category === 'drinks')
+    const kebab = menu.filter(item => item.category === 'kebab')
     const dessert = menu.filter(item => item.category === 'dessert')
     const pizza = menu.filter(item => item.category === 'pizza')
     const soup = menu.filter(item => item.category === 'soup')
@@ -30,8 +30,8 @@ const Menu = ( ) => {
                <MenuCategory items={ salad} titel={'salad'} />
                <Cover image={suopImage}  titel={'soup'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
                 <MenuCategory items={ soup} titel={'soup'} />
-                 <Cover image={Bannerimg}  titel={'drinks'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
-                  <MenuCategory items={ drinks} titel={'drinks'} />
+                 <Cover image={Bannerimg}  titel={'kebab'} subtitel={'Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus'}/>
+                  <MenuCategory items={ kebab} titel={'kebab'} />
         </div>
     );
 };

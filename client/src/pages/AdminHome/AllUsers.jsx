@@ -76,7 +76,7 @@ const handleMakeAdmin = user =>{
       {/* Responsive Table Wrapper */}
       <div className="w-full overflow-x-auto">
         <table className="min-w-[600px] md:table-auto table-fixed w-full border border-gray-200 rounded-lg overflow-hidden">
-          <thead className="text-white text-sm md:text-base bg-[#D1A054]">
+          <thead className="text-white text-sm md:text-base bg-[#CE2828]">
             <tr>
               <th className="px-4 py-3 font-semibold font-Cinzel text-left w-12">#</th>
               <th className="px-4 py-3 font-semibold font-Cinzel text-left">Name</th>
@@ -97,7 +97,7 @@ const handleMakeAdmin = user =>{
                   ) : (
                     <button
                       onClick={() => handleMakeAdmin(user)}
-                      className="p-1 bg-[#D1A054] text-white rounded-md hover:bg-[#b57d36] transition"
+                      className="p-1 bg-[#CE2828] text-white rounded-md hover:bg-[#CE2727] transition"
                     >
                       <FaUsers className="text-xl" />
                     </button>
@@ -106,7 +106,7 @@ const handleMakeAdmin = user =>{
                 <td className="px-4 py-3">
                   <button
                     onClick={() => handleDeleteuser(user)}
-                    className="p-1 bg-[#B91C1C] text-white rounded-md hover:bg-red-700 transition"
+                    className="p-1 bg-[#CE2828] text-white rounded-md hover:bg-red-700 transition"
                   >
                     <RiDeleteBin6Line className="text-xl" />
                   </button>

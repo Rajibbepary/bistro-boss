@@ -78,7 +78,7 @@ const AddItems = () => {
                        <label className="text-sm text-gray-500" htmlFor="category">Category*</label>
                     <select  {...register("category")} id="category" className="outline-none md:py-2.5 py-2 px-3 rounded border border-gray-500/40">
                         <option value="">Select Category</option>
-                        {[{ name: 'chicken' },{ name: 'salad' }, { name: 'pizza' },  { name: 'drinks' }, { name: 'dessert' }, { name: 'soup' }].map((item, index) => (
+                        {[{ name: 'chicken' },{ name: 'salad' }, { name: 'pizza' },  { name: 'kebab' }, { name: 'dessert' }, { name: 'soup' }].map((item, index) => (
                             <option  key={index} value={item.name}>{item.name}</option>
                         ))}
                     </select>
