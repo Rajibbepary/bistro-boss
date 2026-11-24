@@ -83,7 +83,7 @@ const ManageItem = () => {
                     </table>
                 </div>
             </div>
-        </div>
+        </div> 
         </div>
     );
 };

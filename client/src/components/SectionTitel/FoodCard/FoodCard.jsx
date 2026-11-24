@@ -67,7 +67,7 @@ const FoodCard = ({ item }) => {
         {/* Food Image */}
         <div className="relative overflow-hidden">
           <img
-            className="w-full h-[200px] object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            className="w-full  h-[200px] object-cover object-center group-hover:scale-105 transition-transform duration-500"
             src={image}
             alt={name}
           />
@@ -133,11 +133,11 @@ const FoodCard = ({ item }) => {
             <div className="grid md:grid-cols-2">
 
               {/* Food Image */}
-              <div className="h-64 md:h-full">
+              <div className="h-64  md:h-full">
                 <img
                   src={image}
                   alt={name}
-                  className="h-full w-full object-cover"
+                  className="h-full  w-full object-cover"
                 />
               </div>
 
