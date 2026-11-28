@@ -47,7 +47,7 @@ const Navbar = () => {
 
         {/* Menu Links */}
         <div
-          className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-12 right-0 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${
+          className={`max-sm:fixed max-sm:h-screen max-sm:w-full max-sm:top-12 right-0 flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 max-sm:p-4 transition-all duration-300 z-50 ${
             open ? "max-sm:translate-x-0 bg-black/30 md:bg-none" : "max-sm:translate-x-full "
           }`}
         >
@@ -57,10 +57,10 @@ const Navbar = () => {
               <Link
                 key={index}
                 to={link.path}
-                className={`transition-all ${
+                className={`text-center ${
                   isActive
-                    ? "text-[#CE2828] font-semibold  max-sm:text-black max-sm:bg-white px-1 max-sm:rounded-sm"
-                    : "lg:text-[#FFFFFF] max-sm:text-[#CE2828]"
+                    ? "text-[#CE2828] transition duration-500 max-sm:text-[#FFF] max-sm:w-full py-3 max-sm:bg-[#CE2828] "
+                    : "text-[#FFF]"
                 }`}
               >
                 {link.name}
