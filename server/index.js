@@ -325,7 +325,7 @@ app.get('/payments/:email', verifyToken, async (req, res) =>{
   ///
     // Ping MongoDB to confirm successful connection
     // This line is command Todo 
-    await client.db("admin").command({ ping: 1 });
+   // await client.db("admin").command({ ping: 1 });
 
   } finally {
     // Optional: Close the connection when finished
